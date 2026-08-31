@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CalendarioLaboral_V40" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.CalendarioLaboral_V40" parent="Base.Theme.CalendarioLaboral_V40" />
+    
+    <style name="Tarjeta_menu_personalizada" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/backcolor</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">16dp</item>
+        <item name="strokeWidth">0dp</item> <!-- Elimina bordes extraños en Material 3 -->
+
+    </style>
+
+    <!-- Estilo opcional para centralizar también el diseño del texto interno -->
+    <style name="TextoTarjetaMenu">
+        <item name="android:textColor">@color/primario</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+</resources>

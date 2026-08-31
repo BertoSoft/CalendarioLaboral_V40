@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backcolor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical">
+        
+        <!-- Imagen Logo -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:src="@drawable/logo1"
+            android:layout_marginBottom="16dp"
+            android:padding="16dp"/>
+        
+        <!-- Primera Fila -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <!--Festivos-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                style="@style/Tarjeta_menu_personalizada"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:rippleColor="#3F51B5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Festivos"
+                    style="@style/TextoTarjetaMenu"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Vacaciones -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                style="@style/Tarjeta_menu_personalizada"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:rippleColor="#3F51B5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Vacaciones"
+                    style="@style/TextoTarjetaMenu"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- Segunda Fila -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <!-- Calendario -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                style="@style/Tarjeta_menu_personalizada"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:rippleColor="#3F51B5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Calendario Laboral"
+                    style="@style/TextoTarjetaMenu"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- Tercera Fila -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <!-- Backup -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                style="@style/Tarjeta_menu_personalizada"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:rippleColor="#3F51B5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Backup"
+                    style="@style/TextoTarjetaMenu"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Excesos Jornada -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                style="@style/Tarjeta_menu_personalizada"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:rippleColor="#3F51B5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Excesos Jornada"
+                    style="@style/TextoTarjetaMenu"/>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+        </LinearLayout>
+        
+    </LinearLayout>
+    
+</ScrollView>
