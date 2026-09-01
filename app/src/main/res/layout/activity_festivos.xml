@@ -8,18 +8,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="16sp"
         android:orientation="vertical">
 
         <!-- Imagen Logo -->
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="75dp"
             android:src="@drawable/logo2"/>
 
         <!-- Texto Titulo y spAno -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="12dp"
             android:orientation="horizontal">
 
             <TextView
@@ -31,6 +33,7 @@
                 android:text="Festivos del Año."/>
 
             <Spinner
+                android:id="@+id/spAnos"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -41,68 +44,57 @@
         <!-- RecyclerView -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="350dp"
+            android:layout_marginBottom="12dp"
             style="@style/Tarjeta_menu_personalizada">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-        </androidx.cardview.widget.CardView>
 
-        <!-- Linea divisoria -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:foreground="@color/secundario"/>
+        </androidx.cardview.widget.CardView>
 
         <!-- Selector de fecha y Tipo Festivo -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="125dp"
+            android:layout_marginBottom="24sp"
+
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_marginBottom="12dp"
                 style="@style/Tarjeta_menu_personalizada"
-                app:cardBackgroundColor="@color/violeta">
+                app:cardBackgroundColor="@color/white">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    style="@style/TextoSp"
                     android:text="Seleccionar Fecha 📅"
                     android:layout_weight="1"/>
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                style="@style/Tarjeta_menu_personalizada">
-
-            <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-
-            </androidx.cardview.widget.CardView>
+                android:background="@color/gris_claro"
+                android:layout_weight="1"/>
 
         </LinearLayout>
-
-        <!-- Linea divisoria -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginBottom="16dp"
-            android:foreground="@color/secundario"/>
 
         <!-- Boton de Guardar -->
         <Button
             android:layout_width="match_parent"
-            android:layout_height="100dp"/>
+            android:layout_height="75dp"
+            android:backgroundTint="@color/gris_claro"
+            style="@style/TextoSp"
+            android:text="Guardar Datos"/>
 
     </LinearLayout>
 
