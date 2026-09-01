@@ -1,10 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".modulos.festivos.ui.Festivos">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backcolor">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Imagen Logo -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/logo2"/>
+
+        <!-- Texto Titulo y spAno -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                style="@style/TextoTitulos"
+                android:text="Festivos del Año."/>
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <!-- RecyclerView -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            style="@style/Tarjeta_menu_personalizada">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Linea divisoria -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:foreground="@color/secundario"/>
+
+        <!-- Selector de fecha y Tipo Festivo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                style="@style/Tarjeta_menu_personalizada"
+                app:cardBackgroundColor="@color/violeta">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Seleccionar Fecha 📅"
+                    android:layout_weight="1"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                style="@style/Tarjeta_menu_personalizada">
+
+            <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- Linea divisoria -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="16dp"
+            android:foreground="@color/secundario"/>
+
+        <!-- Boton de Guardar -->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

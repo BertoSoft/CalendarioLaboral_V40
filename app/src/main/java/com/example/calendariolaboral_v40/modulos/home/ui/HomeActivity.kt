@@ -1,13 +1,15 @@
 package com.example.calendariolaboral_v40.modulos.home.ui
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import com.example.calendariolaboral_v40.R
 import com.example.calendariolaboral_v40.databinding.ActivityHomeBinding
+import com.example.calendariolaboral_v40.modulos.home.extensions.setTextosyEmojis
+import com.example.calendariolaboral_v40.core.ui.extensions.animacionClick
+import com.example.calendariolaboral_v40.modulos.festivos.ui.Festivos
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -23,56 +25,48 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initUi() {
-        initMenu()
+        initTarjetas()
         initListeners()
     }
 
     private fun initListeners() {
         with(binding){
             cardFestivos.miCardView.setOnClickListener {
-                val animClick = AnimationUtils.loadAnimation(cardFestivos.miCardView.context, R.anim.anim_click)
-                cardFestivos.miCardView.apply {
-                    startAnimation(animClick)
-                    postDelayed({
-                        Toast.makeText(cardFestivos.miCardView.context, "Abriendo Vacaciones...", Toast.LENGTH_SHORT).show()
-                    }, 100)
+                cardFestivos.miCardView.animacionClick{
+                    val intent = Intent(this@HomeActivity, Festivos::class.java)
+                    startActivity(intent)
+                }
+            }
+            cardVacaciones.miCardView.setOnClickListener {
+                cardVacaciones.miCardView.animacionClick{
+                    Toast.makeText(this@HomeActivity, "Abriendo Vacaciones...", Toast.LENGTH_SHORT).show()
+                }
+            }
+            cardBackup.miCardView.setOnClickListener {
+                cardBackup.miCardView.animacionClick{
+                    Toast.makeText(this@HomeActivity, "Abriendo Backup...", Toast.LENGTH_SHORT).show()
+                }
+            }
+            cardExcesoJornadas.miCardView.setOnClickListener {
+                cardExcesoJornadas.miCardView.animacionClick{
+                    Toast.makeText(this@HomeActivity, "Abriendo Exceso de Jornadas...", Toast.LENGTH_SHORT).show()
+                }
+            }
+            cardCalendarioLaboral.miCardView.setOnClickListener {
+                cardCalendarioLaboral.miCardView.animacionClick{
+                    Toast.makeText(this@HomeActivity, "Abriendo Calendario Laboral...", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
-    private fun initMenu() {
-        // Colores de fondo y textos
+    private fun initTarjetas(){
         with(binding){
-            cardFestivos.apply {
-                miCardView.setCardBackgroundColor(getColor(R.color.festivos))
-                tvEmoji.text = "\uD83C\uDF89"
-                tvTexto.text ="Días \nFestivos "
-            }
-
-            cardVacaciones.apply {
-                miCardView.setCardBackgroundColor(getColor(R.color.vacaciones))
-                tvEmoji.text = "\uD83C\uDF34"
-                tvTexto.text ="Mis \nVacaciones"
-            }
-
-            cardBackup.apply {
-                miCardView.setCardBackgroundColor(getColor(R.color.backup))
-                tvEmoji.text = "\uD83D\uDCBE"
-                tvTexto.text ="Copia de  \nSeguridad"
-            }
-
-            cardExcesoJornadas.apply {
-                miCardView.setCardBackgroundColor(getColor(R.color.exceso))
-                tvEmoji.text = "⏱\uFE0F"
-                tvTexto.text ="Exceso de \nJornadas"
-            }
-
-            cardCalendarioLaboral.apply {
-                miCardView.setCardBackgroundColor(getColor(R.color.calendario))
-                tvEmoji.text = "\uD83D\uDCBE"
-                tvTexto.text ="Calendario \nLaboral"
-            }
+            cardFestivos.setTextosyEmojis(R.color.festivos,"\uD83C\uDF89", "Días \nFestivos")
+            cardVacaciones.setTextosyEmojis(R.color.vacaciones,"\uD83C\uDF34", "Mis \nVacaciones")
+            cardBackup.setTextosyEmojis(R.color.backup,"\uD83D\uDCBE", "Copia de \nSeguridad")
+            cardExcesoJornadas.setTextosyEmojis(R.color.exceso,"⏱\uFE0F", "Exceso de \nJornadas")
+            cardCalendarioLaboral.setTextosyEmojis(R.color.calendario,"\uD83D\uDCC5", "Calendario \nLaboral")
         }
     }
 }

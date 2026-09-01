@@ -30,4 +30,11 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
+    <!-- Texto Titulos -->
+    <style name="TextoTitulos">
+        <item name="android:textColor">@color/primario</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
 </resources>
