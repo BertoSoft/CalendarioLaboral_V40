@@ -10,7 +10,7 @@
     <style name="Tarjeta_menu_personalizada" parent="Widget.Material3.CardView.Filled">
         <item name="cardBackgroundColor">@color/backcolor</item>
         <item name="cardCornerRadius">16dp</item>
-        <item name="cardElevation">16dp</item>
+        <item name="cardElevation">8dp</item>
         <item name="strokeWidth">0dp</item> <!-- Elimina bordes extraños en Material 3 -->
 
     </style>
@@ -19,7 +19,14 @@
     <style name="TextoTarjetaMenu">
         <item name="android:textColor">@color/primario</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="EmojiTarjetaMenu">
+        <item name="android:textColor">@color/primario</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:layout_gravity">center</item>
     </style>
 
