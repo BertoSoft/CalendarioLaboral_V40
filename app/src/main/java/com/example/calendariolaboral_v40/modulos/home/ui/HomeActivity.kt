@@ -9,8 +9,9 @@ import com.example.calendariolaboral_v40.databinding.ActivityHomeBinding
 import com.example.calendariolaboral_v40.modulos.home.extensions.setTextosyEmojis
 import com.example.calendariolaboral_v40.core.ui.extensions.animacionClick
 import com.example.calendariolaboral_v40.modulos.festivos.ui.Festivos
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding

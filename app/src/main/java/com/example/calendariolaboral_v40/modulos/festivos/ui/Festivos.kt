@@ -1,29 +1,32 @@
 package com.example.calendariolaboral_v40.modulos.festivos.ui
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import com.example.calendariolaboral_v40.core.ui.extensions.toStringRes
 import android.widget.ArrayAdapter
-import androidx.activity.enableEdgeToEdge
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.calendariolaboral_v30.core.utils.Utils
 import com.example.calendariolaboral_v40.R
 import com.example.calendariolaboral_v40.databinding.ActivityFestivosBinding
 import com.example.calendariolaboral_v40.modulos.festivos.domain.model.TipoFestivo
 import com.example.calendariolaboral_v40.modulos.festivos.ui.viewmodel.FestivosUiEstado
 import com.example.calendariolaboral_v40.modulos.festivos.ui.viewmodel.FestivosViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class Festivos : AppCompatActivity() {
 
     private lateinit var binding:  ActivityFestivosBinding
     private val viewModel: FestivosViewModel by viewModels()
+    @Inject lateinit var utils: Utils
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,11 +60,11 @@ class Festivos : AppCompatActivity() {
             //2.- tv Fecha y btnGuardar
             if(estado.fecha == null){
                 tvFecha.text = "Seleccionar Fecha \uD83D\uDCC5"
-                setFechaActiva(false)
-                setBotonGuardarActivo(false)
+                setModoEdicion(false)
             }
             else{
-
+                tvFecha.text = utils.fromLocalDateToFechaLarga(estado.fecha)
+                setModoEdicion(true)
             }
         }
     }
@@ -92,32 +95,54 @@ class Festivos : AppCompatActivity() {
 
         val arrayAdapter = ArrayAdapter(
             this,
-            R.layout.item_sp_anos,
+            R.layout.item_sp,
             R.id.tvSp, listaTipoFestivos
         )
-        arrayAdapter.setDropDownViewResource(R.layout.item_sp_anos)
+        arrayAdapter.setDropDownViewResource(R.layout.item_sp)
         binding.spFestivos.adapter = arrayAdapter
-
-
-
-
-
-
-
     }
 
-    private  fun setFechaActiva(activa: Boolean){
+    private fun setModoEdicion(isActivo: Boolean){
         with(binding){
-            cardSpFestivos.setCardBackgroundColor(getColor(R.color.gris_claro))
-            spFestivos.isEnabled = false
+            cardSpFestivos.isEnabled = isActivo
+            spFestivos.isEnabled = isActivo
+            btnGuardar.isEnabled = isActivo
+
+            // 🔄 El bloque post espera a que el adaptador termine de dibujar el elemento
+            spFestivos.post {
+                val viewInterna = spFestivos.selectedView as? android.view.ViewGroup
+                val tvInterna = viewInterna?.findViewById<TextView>(R.id.tvSp)
+                tvInterna?.isEnabled = isActivo
+            }
         }
     }
 
-    private fun setBotonGuardarActivo(activo: Boolean){
-        with(binding){
-            btnGuardar.isEnabled = false
-            btnGuardar.setBackgroundColor(getColor(R.color.gris_claro))
+    private fun mostrarCalendario(
+        strTitulo: String,
+        fecha: LocalDate,
+        fechaSeleccionada: (Int, Int, Int) -> Unit
+    ){
+        val ano = fecha.year
+        val mes = fecha.monthValue
+        val dia = fecha.dayOfMonth
+
+        val datePicker = DatePickerDialog(
+            this,
+            { _, anoSeleccion, mesSeleccion, diaSeleccion ->
+                fechaSeleccionada(anoSeleccion, mesSeleccion + 1, diaSeleccion)
+            },
+            ano,
+            mes,
+            dia
+        )
+
+        datePicker.setOnCancelListener {
+            fechaSeleccionada(-1, -1, -1)
         }
+
+        datePicker.setTitle(strTitulo)
+        datePicker.show()
     }
+
 
 }

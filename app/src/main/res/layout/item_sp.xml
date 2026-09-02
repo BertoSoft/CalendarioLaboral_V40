@@ -11,8 +11,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:textColor="@color/selector_color_texto"
-        style="@style/TextoSpAnos"/>
+        style="@style/TextoSp"/>
 
 </LinearLayout>
-
 

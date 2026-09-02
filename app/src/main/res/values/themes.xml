@@ -17,14 +17,12 @@
 
     <!-- Estilo opcional para centralizar también el diseño del texto interno -->
     <style name="TextoTarjetaMenu">
-        <item name="android:textColor">@color/primario</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
         <item name="android:layout_gravity">center</item>
     </style>
 
     <style name="EmojiTarjetaMenu">
-        <item name="android:textColor">@color/primario</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">24sp</item>
         <item name="android:layout_gravity">center</item>
@@ -32,21 +30,25 @@
 
     <!-- Texto Titulos -->
     <style name="TextoTitulos">
-        <item name="android:textColor">@color/primario</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">24sp</item>
     </style>
 
     <!-- Texto Sp -->
-    <style name="TextoSp">
-        <item name="android:textColor">@color/primario</item>
+    <style name="TextoSpAnos">
+        <item name="android:textColor">@color/selector_color_texto</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">20sp</item>
     </style>
 
-    <!-- Texto Sp -->
+    <style name="TextoSp">
+        <item name="android:textColor">@color/selector_color_texto</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- Texto  -->
     <style name="Texto">
-        <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">14sp</item>
     </style>

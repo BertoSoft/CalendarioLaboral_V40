@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.ksp.gradle)
+    alias(libs.plugins.hilt.gradle)
 }
 
 android {
@@ -46,4 +48,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
+
+
+    // Inyección de dependencias con Hilt usando KSP
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 }
