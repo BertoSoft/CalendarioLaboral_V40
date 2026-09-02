@@ -1,7 +1,7 @@
 package com.example.calendariolaboral_v40.modulos.festivos.ui
 
 import android.os.Bundle
-import android.widget.AdapterView
+import com.example.calendariolaboral_v40.core.ui.extensions.toStringRes
 import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.calendariolaboral_v40.R
 import com.example.calendariolaboral_v40.databinding.ActivityFestivosBinding
+import com.example.calendariolaboral_v40.modulos.festivos.domain.model.TipoFestivo
 import java.time.LocalDate
 
 class Festivos : AppCompatActivity() {
@@ -48,5 +49,15 @@ class Festivos : AppCompatActivity() {
     }
 
     private fun initspFestivos() {
+        val listaTipoFestivos = TipoFestivo.entries.map { tipo ->
+            getString(tipo.toStringRes())
+        }
+
+
+
+
+
+
+
     }
 }

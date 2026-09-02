@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CalendarioLaboral_V40</string>
+
+    <!-- Valores de TipoFestivo -->
+    <string name="NACIONAL">Nacional</string>
+    <string name="AUTONOMICO">Autonomico</string>
+    <string name="LOCAL">Local</string>
+    <string name="EXCESO_JORNADA">Exceso de Jornada</string>
+    <string name="CONVENIO">Convenio</string>
+
 </resources>

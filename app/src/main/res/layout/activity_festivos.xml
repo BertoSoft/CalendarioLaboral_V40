@@ -20,8 +20,8 @@
         <!-- Texto Titulo y spAno -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:layout_marginBottom="12dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp"
             android:orientation="horizontal">
 
             <TextView
@@ -42,24 +42,17 @@
         </LinearLayout>
 
         <!-- RecyclerView -->
-        <androidx.cardview.widget.CardView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:layout_marginBottom="12dp"
-            style="@style/Tarjeta_menu_personalizada">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-        </androidx.cardview.widget.CardView>
+            android:layout_height="320dp"
+            style="@style/Tarjeta_menu_personalizada"
+            android:layout_marginBottom="16sp"/>
 
         <!-- Selector de fecha y Tipo Festivo -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="125dp"
             android:layout_marginBottom="24sp"
-
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
@@ -68,23 +61,34 @@
                 android:layout_weight="1"
                 android:layout_marginBottom="12dp"
                 style="@style/Tarjeta_menu_personalizada"
-                app:cardBackgroundColor="@color/white">
+                app:cardBackgroundColor="@color/sp_activo">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    style="@style/TextoSp"
+                    style="@style/Texto"
+                    android:textColor="@color/secundario"
                     android:text="Seleccionar Fecha 📅"
                     android:layout_weight="1"/>
 
             </androidx.cardview.widget.CardView>
 
-            <Spinner
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/gris_claro"
-                android:layout_weight="1"/>
+                app:cardBackgroundColor="@color/sp_activo"
+                android:layout_marginBottom="12sp"
+                style="@style/Tarjeta_menu_personalizada"
+                android:layout_weight="1">
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+            </androidx.cardview.widget.CardView>
+
 
         </LinearLayout>
 
@@ -92,7 +96,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:backgroundTint="@color/gris_claro"
+            android:backgroundTint="@color/secundario"
             style="@style/TextoSp"
             android:text="Guardar Datos"/>
 
