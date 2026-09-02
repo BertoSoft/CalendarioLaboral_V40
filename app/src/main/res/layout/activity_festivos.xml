@@ -20,7 +20,7 @@
         <!-- Texto Titulo y spAno -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:layout_marginBottom="16dp"
             android:orientation="horizontal">
 
@@ -37,6 +37,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@color/sp_activo"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
@@ -44,22 +45,21 @@
         <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="320dp"
+            android:layout_height="350dp"
             style="@style/Tarjeta_menu_personalizada"
-            android:layout_marginBottom="16sp"/>
+            android:layout_marginBottom="24sp"/>
 
         <!-- Selector de fecha y Tipo Festivo -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="125dp"
-            android:layout_marginBottom="24sp"
+            android:layout_height="110dp"
+            android:layout_marginBottom="18sp"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginBottom="12dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="12sp"
                 style="@style/Tarjeta_menu_personalizada"
                 app:cardBackgroundColor="@color/sp_activo">
 
@@ -76,13 +76,13 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
                 app:cardBackgroundColor="@color/sp_activo"
                 android:layout_marginBottom="12sp"
-                style="@style/Tarjeta_menu_personalizada"
-                android:layout_weight="1">
+                style="@style/Tarjeta_menu_personalizada">
 
                 <Spinner
+                    android:id="@+id/spFestivos"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"/>
