@@ -10,10 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calendariolaboral_v30.core.utils.Utils
 import com.example.calendariolaboral_v40.R
 import com.example.calendariolaboral_v40.databinding.ActivityFestivosBinding
 import com.example.calendariolaboral_v40.modulos.festivos.domain.model.TipoFestivo
+import com.example.calendariolaboral_v40.modulos.festivos.ui.adapter.FestivosAdapter
 import com.example.calendariolaboral_v40.modulos.festivos.ui.viewmodel.FestivosUiEstado
 import com.example.calendariolaboral_v40.modulos.festivos.ui.viewmodel.FestivosViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,6 +27,7 @@ import javax.inject.Inject
 class Festivos : AppCompatActivity() {
 
     private lateinit var binding:  ActivityFestivosBinding
+    private val miAdaptador = FestivosAdapter()
     private val viewModel: FestivosViewModel by viewModels()
     @Inject lateinit var utils: Utils
 
@@ -39,9 +42,17 @@ class Festivos : AppCompatActivity() {
 
     private fun initUi() {
         initSp()
+        initRv()
         initObservers()
         //initListeners()
     }
+
+    private fun initRv() {
+        with(binding.rvFestivos){
+            layoutManager = LinearLayoutManager(this@Festivos)
+            adapter = miAdaptador
+            setHasFixedSize(true)
+        }    }
 
     private fun initObservers() {
         lifecycleScope.launch {
@@ -56,6 +67,7 @@ class Festivos : AppCompatActivity() {
     fun dibujaUi(estado: FestivosUiEstado) {
         with(binding){
             // 1.- RecyclerView
+            miAdaptador.submitList(estado.lista)
 
             //2.- tv Fecha y btnGuardar
             if(estado.fecha == null){

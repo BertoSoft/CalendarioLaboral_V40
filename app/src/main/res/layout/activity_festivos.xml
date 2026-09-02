@@ -55,6 +55,7 @@
 
         <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFestivos"
             android:layout_width="match_parent"
             android:layout_height="375dp"
             style="@style/Tarjeta_menu_personalizada"
