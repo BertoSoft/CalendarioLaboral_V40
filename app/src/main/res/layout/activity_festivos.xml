@@ -57,6 +57,7 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardFecha"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="12sp"
@@ -64,6 +65,7 @@
                 app:cardBackgroundColor="@color/sp_activo">
 
                 <TextView
+                    android:id="@+id/tvFecha"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -75,6 +77,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardSpFestivos"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 app:cardBackgroundColor="@color/sp_activo"
@@ -94,6 +97,7 @@
 
         <!-- Boton de Guardar -->
         <Button
+            android:id="@+id/btnGuardar"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:backgroundTint="@color/secundario"

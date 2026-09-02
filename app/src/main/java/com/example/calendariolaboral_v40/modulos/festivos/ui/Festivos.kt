@@ -51,7 +51,19 @@ class Festivos : AppCompatActivity() {
     }
 
     fun dibujaUi(estado: FestivosUiEstado) {
+        with(binding){
+            // 1.- RecyclerView
 
+            //2.- tv Fecha y btnGuardar
+            if(estado.fecha == null){
+                tvFecha.text = "Seleccionar Fecha \uD83D\uDCC5"
+                setFechaActiva(false)
+                setBotonGuardarActivo(false)
+            }
+            else{
+
+            }
+        }
     }
 
     private fun initSp() {
@@ -92,6 +104,20 @@ class Festivos : AppCompatActivity() {
 
 
 
+    }
+
+    private  fun setFechaActiva(activa: Boolean){
+        with(binding){
+            cardSpFestivos.setCardBackgroundColor(getColor(R.color.gris_claro))
+            spFestivos.isEnabled = false
+        }
+    }
+
+    private fun setBotonGuardarActivo(activo: Boolean){
+        with(binding){
+            btnGuardar.isEnabled = false
+            btnGuardar.setBackgroundColor(getColor(R.color.gris_claro))
+        }
     }
 
 }
