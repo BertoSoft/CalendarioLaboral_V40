@@ -33,6 +33,7 @@ class VacacionesViewModel @Inject constructor(
     val estado: StateFlow<VacacionesUiEstado> get() = _estado
 
     fun tvFechaInicialClick(ano: Int, mes: Int, dia: Int){
+        if(ano < 0)return
         val fechaInicio: LocalDate? = LocalDate.of(ano, mes, dia)
         val fechaFinal = _estado.value.fechaFinal
 
@@ -91,6 +92,69 @@ class VacacionesViewModel @Inject constructor(
                             fechaInicio = null,
                             isFechaFinActiva = false,
                             isMostrarCalendario = false,
+                            isCargando = false,
+                            msgError = "La fecha final no puede ser anterior a la inicial..."
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    fun tvFechaFinalClick(ano: Int, mes: Int, dia: Int){
+        if(ano < 1){
+            _estado.update { estadoActual ->
+                estadoActual.copy(
+                    isMostrarCalendario = false,
+                )
+            }
+            return
+        }
+        val fechaFinal = LocalDate.of(ano, mes, dia)
+        val fechaInicio = _estado.value.fechaInicio!!
+
+        if(fechaFinal == null){
+            _estado.update { estadoActual ->
+                estadoActual.copy(
+                    isMostrarCalendario = false,
+                    isFechaFinActiva = true,
+                    isGuardarActivo = false,
+                    msgError = "Debes especificar una fecha final"
+                )
+            }
+        }
+        else{
+            _estado.update { estadoActual ->
+                estadoActual.copy(
+                    isCargando = true,
+                    isMostrarCalendario = false
+                )
+            }
+            viewModelScope.launch {
+                val todoOk = usecase.isFechasValidas(DatosVacaciones(
+                    -1,
+                    fechaInicio,
+                    fechaFinal,
+                    -1
+                    )
+                )
+                if(todoOk){
+                    _estado.update { estadoActual ->
+                        estadoActual.copy(
+                            fechaFinal = fechaFinal,
+                            isMostrarCalendario = false,
+                            isGuardarActivo = true,
+                            msgError = null,
+                            isCargando = false
+                        )
+                    }
+                }
+                else{
+                    _estado.update { estadoActual ->
+                        estadoActual.copy(
+                            fechaFinal = null,
+                            isMostrarCalendario = false,
+                            isGuardarActivo = false,
                             isCargando = false,
                             msgError = "La fecha final no puede ser anterior a la inicial..."
                         )

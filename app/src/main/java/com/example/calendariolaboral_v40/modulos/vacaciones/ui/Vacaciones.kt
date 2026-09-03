@@ -1,9 +1,11 @@
 package com.example.calendariolaboral_v40.modulos.vacaciones.ui
 
 import android.app.DatePickerDialog
+import android.app.LocaleConfig
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -44,10 +46,17 @@ class Vacaciones: AppCompatActivity() {
 
     private fun initListeners() {
         with(binding){
-            tvFechaInicio.setOnClickListener {
+            cardFechaInicial.setOnClickListener {
                 val fecha = LocalDate.now()
-                mostrarCalendario("Fecha inicial del periodo", fecha){ ano, mes, dia ->
+                mostrarCalendario("Fecha inicial del periodo\n", fecha){ ano, mes, dia ->
                     viewModel.tvFechaInicialClick(ano, mes , dia)
+                }
+            }
+
+            cardFechaFinal.setOnClickListener {
+                val fecha = LocalDate.now()
+                mostrarCalendario("Fecha final del periodo\n", fecha){ ano, mes, dia ->
+                    viewModel.tvFechaFinalClick(ano, mes, dia)
                 }
             }
         }
@@ -94,8 +103,8 @@ class Vacaciones: AppCompatActivity() {
             // 3.- Si la fechaFinal esta habilitada y su valor es "", lanzamos mostrarcalendario
             val fecha = LocalDate.now()
             if(estado.isMostrarCalendario){
-                mostrarCalendario( "Fecha final del periodo", fecha){ ano, mes, dia ->
-                    //viewModel.tvFechaFinalClick(ano, mes, dia)
+                mostrarCalendario( "Fecha final del periodo\n", fecha){ ano, mes, dia ->
+                    viewModel.tvFechaFinalClick(ano, mes, dia)
                     viewModel.clearMostrarCalendario()
                 }
             }
@@ -104,7 +113,14 @@ class Vacaciones: AppCompatActivity() {
             btnGuardar.isEnabled = estado.isGuardarActivo
 
             // 4. Gestionar los mensajes de error de negocio si existen
-
+            if(estado.msgError != null){
+                Toast.makeText(
+                    this@Vacaciones,
+                    estado.msgError,
+                    Toast.LENGTH_SHORT
+                ).show()
+                viewModel.clearMsgError()
+            }
 
 
         }
