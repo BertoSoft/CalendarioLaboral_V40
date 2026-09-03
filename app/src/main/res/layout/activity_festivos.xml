@@ -1,121 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/backcolor">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16sp"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/backcolor">
 
-        <!-- Imagen Logo -->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:src="@drawable/logo2"/>
-
-        <!-- Texto Titulo y spAno -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"
-                style="@style/TextoTitulos"
-                android:text="Festivos del Año."/>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginEnd="12sp"
-                style="@style/Tarjeta_menu_personalizada"
-                app:cardBackgroundColor="@color/selector_spinner_back_color">
-
-                <Spinner
-                    android:id="@+id/spAnos"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/sp_activo"
-                    android:layout_gravity="center"/>
-
-            </androidx.cardview.widget.CardView>
-
-
-
-        </LinearLayout>
-
-        <!-- RecyclerView -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvFestivos"
-            android:layout_width="match_parent"
-            android:layout_height="375dp"
-            style="@style/Tarjeta_menu_personalizada"
-            android:layout_marginBottom="24sp"/>
-
-        <!-- Selector de fecha y Tipo Festivo -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="wrap_content"
+            android:padding="16sp"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardFecha"
+            <!-- Imagen Logo -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/logo2"/>
+
+            <!-- Texto Titulo y spAno -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginBottom="12sp"
-                style="@style/Tarjeta_menu_personalizada"
-                app:cardBackgroundColor="@color/sp_activo">
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tvFecha"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="2"
                     android:gravity="center"
-                    style="@style/Texto"
-                    android:textColor="@color/secundario"
-                    android:text="Seleccionar Fecha 📅"
-                    android:layout_weight="1"/>
+                    style="@style/TextoTitulos"
+                    android:text="Festivos del Año."/>
 
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardSpFestivos"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                app:cardBackgroundColor="@color/selector_spinner_back_color"
-                android:layout_marginBottom="12sp"
-                style="@style/Tarjeta_menu_personalizada">
-
-                <Spinner
-                    android:id="@+id/spFestivos"
-                    android:layout_width="match_parent"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:background="@null"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12sp"
+                    style="@style/Tarjeta_menu_personalizada"
+                    app:cardBackgroundColor="@color/selector_spinner_back_color">
 
-            </androidx.cardview.widget.CardView>
+                    <Spinner
+                        android:id="@+id/spAnos"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/sp_activo"
+                        android:layout_gravity="center"/>
 
+                </androidx.cardview.widget.CardView>
+
+
+
+            </LinearLayout>
+
+            <!-- RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFestivos"
+                android:layout_width="match_parent"
+                android:layout_height="375dp"
+                style="@style/Tarjeta_menu_personalizada"
+                android:layout_marginBottom="24sp"/>
+
+            <!-- Selector de fecha y Tipo Festivo -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardFecha"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="12sp"
+                    style="@style/Tarjeta_menu_personalizada"
+                    app:cardBackgroundColor="@color/sp_activo">
+
+                    <TextView
+                        android:id="@+id/tvFecha"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        style="@style/Texto"
+                        android:textColor="@color/secundario"
+                        android:text="Seleccionar Fecha 📅"
+                        android:layout_weight="1"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardSpFestivos"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    app:cardBackgroundColor="@color/selector_spinner_back_color"
+                    android:layout_marginBottom="12sp"
+                    style="@style/Tarjeta_menu_personalizada">
+
+                    <Spinner
+                        android:id="@+id/spFestivos"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:layout_weight="1"/>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+            <!-- Boton de Guardar -->
+            <Button
+                android:id="@+id/btnGuardar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/selector_btn_back_color"
+                style="@style/TextoSp"
+                android:text="Guardar Registro"/>
 
         </LinearLayout>
 
-        <!-- Boton de Guardar -->
-        <Button
-            android:id="@+id/btnGuardar"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/selector_btn_back_color"
-            style="@style/TextoSp"
-            android:text="Guardar Registro"/>
+    </ScrollView>
 
-    </LinearLayout>
+        <!-- 2. UBICACIÓN CLAVE: El ProgressBar se añade al final de la jerarquía
+                para que flote en el centro absoluto, tapando la pantalla al cargar -->
+    <ProgressBar
+    android:id="@+id/pbCargando"
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:visibility="gone"
+    android:elevation="8dp"
+    android:theme="@style/Widget.AppCompat.ProgressBar"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
 
-</ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

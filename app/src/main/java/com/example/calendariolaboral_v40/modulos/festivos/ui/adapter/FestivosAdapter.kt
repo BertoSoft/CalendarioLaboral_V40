@@ -5,11 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.calendariolaboral_v40.core.ui.extensions.toStringRes
+import com.example.calendariolaboral_v40.core.utils.Utils
 import com.example.calendariolaboral_v40.databinding.ActivityFestivosBinding
 import com.example.calendariolaboral_v40.databinding.ItemRvFestivosBinding
 import com.example.calendariolaboral_v40.modulos.festivos.domain.model.DatosFestivos
 
-class FestivosAdapter: ListAdapter<DatosFestivos, FestivosAdapter.FestivosViewHolder>(DiffCallback) {
+class FestivosAdapter(
+    private val utils: Utils
+): ListAdapter<DatosFestivos, FestivosAdapter.FestivosViewHolder>(DiffCallback) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -27,14 +31,18 @@ class FestivosAdapter: ListAdapter<DatosFestivos, FestivosAdapter.FestivosViewHo
         position: Int
     ) {
         val item = getItem(position)
-        holder.render(item)    }
+        holder.render(item, utils)
+    }
 
     inner class FestivosViewHolder(
         private val binding: ItemRvFestivosBinding
     ): RecyclerView.ViewHolder(binding.root){
 
-        fun render(festivo: DatosFestivos){
-
+        fun render(festivo: DatosFestivos, utils: Utils){
+            val strFechaLarga = utils.fromLocalDateToFechaLarga(festivo.fecha)
+            val strTipo = binding.root.context.getString( festivo.tipoFestivo.toStringRes())
+            binding.tvFecha.text = strFechaLarga
+            binding.tvTipoFestivo.text = strTipo
         }
     }
 

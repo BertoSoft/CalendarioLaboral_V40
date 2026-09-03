@@ -1,0 +1,164 @@
+package com.example.calendariolaboral_v40.core.data
+
+import android.content.ContentValues
+import android.content.Context
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
+import com.example.calendariolaboral_v40.core.utils.Utils
+import com.example.calendariolaboral_v40.modulos.festivos.domain.model.DatosFestivos
+import com.example.calendariolaboral_v40.modulos.festivos.domain.model.TipoFestivo
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class MiSqliteHelper @Inject constructor (
+    @ApplicationContext private val miContexto: Context,
+    private val utils: Utils
+): SQLiteOpenHelper(
+    miContexto,
+    DATABASE_NAME,
+    null,
+    DATABASE_VERSION
+) {
+    override fun onCreate(p0: SQLiteDatabase?) {
+        // Tabla de festivos
+        p0?.execSQL("""
+            CREATE TABLE festivos (
+                _id INTEGER PRIMARY KEY AUTOINCREMENT,
+                fecha TEXT NOT NULL, 
+                tipo_festivo TEXT NOT NULL
+            )
+        """.trimIndent())
+
+        // Tabla de vacaciones
+        p0?.execSQL("""
+            CREATE TABLE vacaciones (
+                _id INTEGER PRIMARY KEY AUTOINCREMENT,
+                fecha_inicio TEXT NOT NULL,
+                fecha_final TEXT NOT NULL
+            )
+        """.trimIndent())
+
+    }
+
+    override fun onUpgrade(
+        p0: SQLiteDatabase?,
+        p1: Int,
+        p2: Int
+    ) {
+        p0?.execSQL("DROP TABLE IF EXISTS festivos")
+        p0?.execSQL("DROP TABLE IF EXISTS vacaciones")
+
+        onCreate(p0)
+    }
+
+    //###################################################################3
+    // Funciones de miSqliteHelper
+    //##################################################################
+    fun existeFestivo(dato: DatosFestivos): Int{
+        var id = -1
+        val db: SQLiteDatabase = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM festivos", null)
+
+        if(cursor.moveToFirst()){
+            val colId = cursor.getColumnIndex("_id")
+            val colFecha = cursor.getColumnIndex("fecha")
+            while (!cursor.isAfterLast){
+                val _id = cursor.getInt(colId)
+                val strFecha = cursor.getString(colFecha)
+                val fecha = utils.fromFechaCortaToLocalDate(strFecha)
+
+                if(fecha == dato.fecha){
+                    id = _id
+                    break
+                }
+                cursor.moveToNext()
+            }
+        }
+        cursor.close()
+        return  id
+    }
+
+    fun getALlFestivos(strAno: String): List<DatosFestivos>{
+        val lista = mutableListOf<DatosFestivos>()
+        val db: SQLiteDatabase = readableDatabase
+
+
+        val query = "SELECT * FROM festivos WHERE fecha LIKE ?"
+        val args = arrayOf("%$strAno") // Buscará cualquier texto que termine en /strAno
+        val cursor = db.rawQuery(query, args)
+
+
+        val utils = Utils()
+
+        if(cursor.moveToFirst()){
+            val colId = cursor.getColumnIndex("_id")
+            val colFecha = cursor.getColumnIndex("fecha")
+            val colTipo = cursor.getColumnIndex("tipo_festivo")
+            while (!cursor.isAfterLast){
+                val strFecha = cursor.getString(colFecha)
+                val strTipo = cursor.getString(colTipo)
+                val _id = cursor.getInt(colId)
+
+                val fecha = utils.fromFechaCortaToLocalDate(strFecha)
+                val tipo = TipoFestivo.valueOf(strTipo)
+
+                lista.add(DatosFestivos(
+                    _id,
+                    fecha,
+                    tipo
+                ))
+                cursor.moveToNext()
+            }
+        }
+        cursor.close()
+        return  lista
+    }
+
+    fun setFestivo(dato: DatosFestivos): Boolean {
+        val db: SQLiteDatabase = writableDatabase
+        val strFecha = Utils().fromLocalDateToFechaCorta(dato.fecha)
+        val strTipo = dato.tipoFestivo.toString()
+        val valores = ContentValues().apply {
+            put("fecha", strFecha)
+            put("tipo_festivo", strTipo)
+        }
+        return try {
+            if(dato.id < 0){
+                db.insert("festivos", null, valores) != -1L
+            }
+            else{
+                db.update("festivos", valores, "_id = ?", arrayOf(dato.id.toString())) > 0
+            }
+        }
+        catch (e: Exception){
+            false
+        }
+    }
+
+    fun delFestivo(dato: DatosFestivos): Boolean{
+        val db = writableDatabase
+        val where = "_id = ?"
+        val arg = arrayOf(dato.id.toString())
+
+        return try {
+            val filasAfectadas = db.delete("festivos", where, arg)
+            filasAfectadas > 0
+        }
+        catch (e: Exception){
+            e.printStackTrace()
+            false
+        }
+    }
+
+
+
+    //######################################################################
+    // Nombre de la Base De Datos y Version
+    //###################################################################3
+    companion object {
+        private const val DATABASE_NAME = "calendario.db"
+        private const val DATABASE_VERSION = 1
+    }
+}

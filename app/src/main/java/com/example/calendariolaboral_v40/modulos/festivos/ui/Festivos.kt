@@ -2,6 +2,8 @@ package com.example.calendariolaboral_v40.modulos.festivos.ui
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import com.example.calendariolaboral_v40.core.ui.extensions.toStringRes
 import android.widget.ArrayAdapter
 import android.widget.TextView
@@ -11,8 +13,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.calendariolaboral_v30.core.utils.Utils
 import com.example.calendariolaboral_v40.R
+import com.example.calendariolaboral_v40.core.utils.Utils
 import com.example.calendariolaboral_v40.databinding.ActivityFestivosBinding
 import com.example.calendariolaboral_v40.modulos.festivos.domain.model.TipoFestivo
 import com.example.calendariolaboral_v40.modulos.festivos.ui.adapter.FestivosAdapter
@@ -26,10 +28,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class Festivos : AppCompatActivity() {
 
-    private lateinit var binding:  ActivityFestivosBinding
-    private val miAdaptador = FestivosAdapter()
-    private val viewModel: FestivosViewModel by viewModels()
     @Inject lateinit var utils: Utils
+    private lateinit var binding:  ActivityFestivosBinding
+    private val miAdaptador by lazy { FestivosAdapter(utils) }
+    private val viewModel: FestivosViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +46,58 @@ class Festivos : AppCompatActivity() {
         initSp()
         initRv()
         initObservers()
-        //initListeners()
+        initListeners()
+    }
+
+    private fun initListeners() {
+        with(binding){
+            spAnos.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                override fun onItemSelected(
+                    spView: AdapterView<*>?,
+                    p1: View?,
+                    indice: Int,
+                    p3: Long
+                ) {
+                    // Esto hace que si el rv esta cargando no hacemos nada aqui
+                    if(viewModel.estado.value.isCargando) return
+
+                    val strAno = spView?.getItemAtPosition(indice)?.toString() ?: LocalDate.now().year.toString()
+                    viewModel.spAnoClick(strAno)
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                }
+
+            }
+
+            spFestivos.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+                override fun onItemSelected(
+                    p0: AdapterView<*>?,
+                    p1: View?,
+                    p2: Int,
+                    p3: Long
+                ) {
+                    viewModel.spFestivosClick(p2)
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                }
+
+            }
+
+            tvFecha.setOnClickListener {
+                val fecha = LocalDate.now()
+                mostrarCalendario(
+                    "Elige una fecha para el día festivo",
+                    fecha,
+                    {ano, mes, dia -> viewModel.tvFechaClick(ano, mes, dia)}
+                )
+            }
+
+            btnGuardar.setOnClickListener {
+                viewModel.btnGuardarClick()
+            }
+        }
     }
 
     private fun initRv() {
@@ -52,7 +105,8 @@ class Festivos : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@Festivos)
             adapter = miAdaptador
             setHasFixedSize(true)
-        }    }
+        }
+    }
 
     private fun initObservers() {
         lifecycleScope.launch {
@@ -66,12 +120,23 @@ class Festivos : AppCompatActivity() {
 
     fun dibujaUi(estado: FestivosUiEstado) {
         with(binding){
+            //0 progressbar
+            if(estado.isCargando){
+                pbCargando.visibility = View.VISIBLE
+                rvFestivos.alpha = 0.5F
+            }
+            else{
+                pbCargando.visibility = View.GONE
+                rvFestivos.alpha =  1.0F
+            }
+
             // 1.- RecyclerView
             miAdaptador.submitList(estado.lista)
 
             //2.- tv Fecha y btnGuardar
             if(estado.fecha == null){
                 tvFecha.text = "Seleccionar Fecha \uD83D\uDCC5"
+                spFestivos.setSelection(0)
                 setModoEdicion(false)
             }
             else{
@@ -82,11 +147,11 @@ class Festivos : AppCompatActivity() {
     }
 
     private fun initSp() {
-        initspAnos()
+        initSpAnos()
         initspFestivos()
     }
 
-    private fun initspAnos() {
+    private fun initSpAnos() {
         val ano = LocalDate.now().year
         val listaAnos = (ano + 1).downTo(2022).map{ it.toString() }
         val arrayAdapter = ArrayAdapter(
