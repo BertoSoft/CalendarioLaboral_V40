@@ -9,6 +9,7 @@ import com.example.calendariolaboral_v40.databinding.ActivityHomeBinding
 import com.example.calendariolaboral_v40.modulos.home.extensions.setTextosyEmojis
 import com.example.calendariolaboral_v40.core.ui.extensions.animacionClick
 import com.example.calendariolaboral_v40.modulos.festivos.ui.Festivos
+import com.example.calendariolaboral_v40.modulos.vacaciones.Vacaciones
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,8 +41,8 @@ class HomeActivity : AppCompatActivity() {
             }
             cardVacaciones.miCardView.setOnClickListener {
                 cardVacaciones.miCardView.animacionClick{
-                    Toast.makeText(this@HomeActivity, "Abriendo Vacaciones...", Toast.LENGTH_SHORT).show()
-                }
+                    val intent = Intent(this@HomeActivity, Vacaciones::class.java)
+                    startActivity(intent)                }
             }
             cardBackup.miCardView.setOnClickListener {
                 cardBackup.miCardView.animacionClick{
