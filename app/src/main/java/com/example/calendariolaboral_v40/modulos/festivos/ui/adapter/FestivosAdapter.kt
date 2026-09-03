@@ -77,7 +77,7 @@ class FestivosAdapter(
             oldItem: DatosFestivos,
             newItem: DatosFestivos
         ): Boolean {
-            return oldItem == newItem
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(

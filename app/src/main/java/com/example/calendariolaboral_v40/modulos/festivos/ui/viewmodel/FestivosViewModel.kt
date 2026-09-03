@@ -1,5 +1,6 @@
 package com.example.calendariolaboral_v40.modulos.festivos.ui.viewmodel
 
+import android.util.Log.e
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.calendariolaboral_v40.modulos.festivos.domain.model.DatosFestivos
@@ -102,7 +103,9 @@ class FestivosViewModel @Inject constructor(
                         estadoActual.copy(
                             lista = lista,
                             isCargando = false,
-                            msgError = null
+                            msgError = null,
+                            fecha = null,
+                            tipoFestivo = null
                             )
                     }
 
@@ -138,6 +141,43 @@ class FestivosViewModel @Inject constructor(
     }
 
     fun itemDeleteClick(festivo: DatosFestivos){
-
+        _estado.update { estadoActual ->
+            estadoActual.copy(
+                isCargando = true
+            )
+        }
+        viewModelScope.launch {
+            try {
+                if(useCase.delFestivoUseCase(festivo)){
+                    val strAno = festivo.fecha.year.toString()
+                    val lista = useCase.getAllFestivosUseCase(strAno)
+                    _estado.update { estadoActual ->
+                        estadoActual.copy(
+                            isCargando = false,
+                            lista = lista,
+                            msgError = null,
+                            fecha = null,
+                            tipoFestivo = null
+                        )
+                    }
+                }
+                else {
+                    _estado.update { estadoActual ->
+                        estadoActual.copy(
+                            isCargando = false,
+                            msgError = "Se produjo un error al borra el registro"
+                        )
+                    }
+                }
+            }
+            catch (e: Exception){
+                _estado.update { estadoActual ->
+                    estadoActual.copy(
+                        isCargando = false,
+                        msgError = "Error al borrar el registro : ${e.message}"
+                    )
+                }
+            }
+        }
     }
 }

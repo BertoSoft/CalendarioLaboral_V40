@@ -144,7 +144,6 @@ class Festivos : AppCompatActivity() {
             //2.- tv Fecha y btnGuardar
             if(estado.fecha == null){
                 tvFecha.text = "Seleccionar Fecha \uD83D\uDCC5"
-                spFestivos.setSelection(0)
                 setModoEdicion(false)
             }
             else{
@@ -152,13 +151,18 @@ class Festivos : AppCompatActivity() {
                 setModoEdicion(true)
             }
 
-            //  Sp Festivos
+            // 3.- Spinner Festivos (Estructura de ifs corregida)
             val indice = TipoFestivo.entries.find { it == estado.tipoFestivo }?.ordinal
-            if(cardSpFestivos.isEnabled && indice != null && spFestivos.selectedItem != indice){
-                spFestivos.setSelection(indice)
-            }
-            else{
-                spFestivos.setSelection(0)
+            if(cardSpFestivos.isEnabled && indice != null){
+                // Si estamos editando, sincronizamos el Spinner con el índice correcto
+                if(spFestivos.selectedItemPosition != indice){
+                    spFestivos.setSelection(indice)
+                }
+            } else {
+                // El reset a 0 solo ocurre cuando NO hay un festivo seleccionado para edición
+                if(spFestivos.selectedItemPosition != 0){
+                    spFestivos.setSelection(0)
+                }
             }
         }
     }
