@@ -17,48 +17,69 @@
             android:layout_height="100dp"
             android:src="@drawable/logo2_erimsa"/>
 
+        <!-- Titulo y SpAno -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12sp"
+            android:layout_marginBottom="16sp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:text="Mis Vacaciones"
+                android:gravity="center"
                 style="@style/TextoTitulos"
                 android:layout_weight="2"/>
 
-            <Spinner
+            <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                style="@style/TextoSp"
-                android:layout_weight="1"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="12sp"
+                style="@style/Tarjeta_menu_personalizada"
+                app:cardBackgroundColor="@color/selector_spinner_back_color">
+
+                <Spinner
+                    android:id="@+id/spAnos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/sp_activo"
+                    android:layout_gravity="center"/>
+
+            </androidx.cardview.widget.CardView>
 
 
         </LinearLayout>
 
+        <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="350dp"
-            android:layout_marginBottom="12sp" />
+            style="@style/Tarjeta_menu_personalizada"
+            android:layout_marginBottom="24sp" />
 
+        <!-- Linea -->
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_marginBottom="12sp"
             android:background="@color/secundario"/>
 
+        <!-- Textpo Introduccion Seleccion fechas -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:gravity="center"
             android:text="Pulsa en los cuadros, para configurar fechas."/>
 
+        <!-- Selectores de Fechas -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12sp"
+            android:layout_marginBottom="18sp"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
@@ -66,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 style="@style/Tarjeta_menu_personalizada"
-                app:cardBackgroundColor="@color/autonomico"
+                app:cardBackgroundColor="@color/selector_spinner_back_color"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -79,7 +100,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:textColor="@color/white"
+                        android:textColor="@color/gris_oscuro"
                         android:layout_marginBottom="4dp"
                         android:gravity="center"
                         android:text="Pulsa Inicio 📅"/>
@@ -88,7 +109,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:textColor="@color/white"
+                        android:textColor="@color/selector_color_texto"
                         android:textStyle="bold"
                         android:textSize="20dp"
                         android:layout_marginBottom="8dp"
@@ -104,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 style="@style/Tarjeta_menu_personalizada"
-                app:cardBackgroundColor="@color/autonomico"
+                app:cardBackgroundColor="@color/selector_spinner_back_color"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -117,16 +138,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:textColor="@color/white"
+                        android:textColor="@color/gris_oscuro"
                         android:layout_marginBottom="4dp"
                         android:gravity="center"
-                        android:text="Pulsa Inicio 📅"/>
+                        android:text="Pulsa Final 📅"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:textColor="@color/white"
+                        android:textColor="@color/selector_color_texto"
                         android:textStyle="bold"
                         android:textSize="20dp"
                         android:layout_marginBottom="8dp"
@@ -141,9 +162,13 @@
 
         </LinearLayout>
 
+        <!-- Boton Guardar -->
         <Button
+            android:id="@+id/btnGuardar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:backgroundTint="@color/selector_btn_back_color"
+            style="@style/TextoSp"
             android:text="Guardar Registro"/>
 
     </LinearLayout>
