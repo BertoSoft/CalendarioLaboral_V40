@@ -9,7 +9,7 @@ import com.example.calendariolaboral_v40.databinding.ActivityHomeBinding
 import com.example.calendariolaboral_v40.modulos.home.extensions.setTextosyEmojis
 import com.example.calendariolaboral_v40.core.ui.extensions.animacionClick
 import com.example.calendariolaboral_v40.modulos.festivos.ui.Festivos
-import com.example.calendariolaboral_v40.modulos.vacaciones.Vacaciones
+import com.example.calendariolaboral_v40.modulos.vacaciones.ui.Vacaciones
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

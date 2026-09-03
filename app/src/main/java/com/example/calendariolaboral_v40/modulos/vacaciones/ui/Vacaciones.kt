@@ -1,0 +1,162 @@
+package com.example.calendariolaboral_v40.modulos.vacaciones.ui
+
+import android.app.DatePickerDialog
+import android.os.Bundle
+import android.view.View
+import android.widget.ArrayAdapter
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.transition.Visibility
+import com.example.calendariolaboral_v40.R
+import com.example.calendariolaboral_v40.core.utils.Utils
+import com.example.calendariolaboral_v40.databinding.ActivityVacacionesBinding
+import com.example.calendariolaboral_v40.modulos.vacaciones.ui.viewmodel.VacacionesUiEstado
+import com.example.calendariolaboral_v40.modulos.vacaciones.ui.viewmodel.VacacionesViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import java.time.LocalDate
+import javax.inject.Inject
+
+@AndroidEntryPoint
+class Vacaciones: AppCompatActivity() {
+
+    @Inject lateinit var utils: Utils
+    private lateinit var binding: ActivityVacacionesBinding
+    private val viewModel: VacacionesViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityVacacionesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        initUi()
+    }
+
+    private fun initUi() {
+        initSp()
+        initRv()
+        initObservers()
+        initListeners()
+    }
+
+    private fun initListeners() {
+        with(binding){
+            tvFechaInicio.setOnClickListener {
+                val fecha = LocalDate.now()
+                mostrarCalendario("Fecha inicial del periodo", fecha){ ano, mes, dia ->
+                    viewModel.tvFechaInicialClick(ano, mes , dia)
+                }
+            }
+        }
+
+    }
+
+    private fun initObservers() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                viewModel.estado.collect { estado ->
+                    dibujaUi(estado)
+                }
+            }
+        }
+    }
+
+    fun dibujaUi(estado: VacacionesUiEstado) {
+        with(binding){
+            // 0.- ProgessBar
+            if(estado.isCargando){
+                pbCargando.visibility = View.VISIBLE
+                rvVacaciones.alpha = 0.5F
+            }
+            else{
+                pbCargando.visibility = View.GONE
+                rvVacaciones.alpha = 1.0F
+            }
+
+            // 1.- RecyclerView
+
+            // 2.- Fechas
+            var strFechaInicio = ""
+            var strFechaFinal = ""
+            if(estado.fechaInicio != null){
+                strFechaInicio = utils.fromLocalDateToFechaCorta(estado.fechaInicio)
+            }
+            if(estado.fechaFinal != null){
+                strFechaFinal = utils.fromLocalDateToFechaCorta(estado.fechaFinal)
+            }
+            tvFechaInicio.text = strFechaInicio.ifBlank { "--/--/----" }
+            tvFechaFinal.text = strFechaFinal.ifBlank { "--/--/----" }
+            cardFechaFinal.isEnabled = estado.isFechaFinActiva
+
+            // 3.- Si la fechaFinal esta habilitada y su valor es "", lanzamos mostrarcalendario
+            val fecha = LocalDate.now()
+            if(estado.isMostrarCalendario){
+                mostrarCalendario( "Fecha final del periodo", fecha){ ano, mes, dia ->
+                    //viewModel.tvFechaFinalClick(ano, mes, dia)
+                    viewModel.clearMostrarCalendario()
+                }
+            }
+
+            // 3. Controlar el estado del botón guardar
+            btnGuardar.isEnabled = estado.isGuardarActivo
+
+            // 4. Gestionar los mensajes de error de negocio si existen
+
+
+
+        }
+    }
+
+    private fun initRv() {
+
+    }
+
+    private fun initSp() {
+        initSpAno()
+    }
+
+    private fun initSpAno() {
+        val ano = LocalDate.now().year
+        val listaAnos = (ano + 1).downTo(2022).map{ it.toString() }
+        val arrayAdapter = ArrayAdapter(
+            this,
+            R.layout.item_sp_anos,
+            R.id.tvSp,
+            listaAnos
+        )
+        arrayAdapter.setDropDownViewResource(R.layout.item_sp_anos)
+        binding.spAnos.adapter = arrayAdapter
+        binding.spAnos.setSelection(1)
+    }
+
+    private fun mostrarCalendario(
+        strTitulo: String,
+        fecha: LocalDate,
+        fechaSeleccionada: (Int, Int, Int) -> Unit
+    ){
+        val ano = fecha.year
+        val mes = fecha.monthValue
+        val dia = fecha.dayOfMonth
+
+        val datePicker = DatePickerDialog(
+            this,
+            { _, anoSeleccion, mesSeleccion, diaSeleccion ->
+                fechaSeleccionada(anoSeleccion, mesSeleccion + 1, diaSeleccion)
+            },
+            ano,
+            mes,
+            dia
+        )
+
+        datePicker.setOnCancelListener {
+            fechaSeleccionada(-1, -1, -1)
+        }
+
+        datePicker.setTitle(strTitulo)
+        datePicker.show()
+    }
+
+}
