@@ -106,6 +106,14 @@ class Festivos : AppCompatActivity() {
             adapter = miAdaptador
             setHasFixedSize(true)
         }
+
+        miAdaptador.onItemPulsado = { festivo ->
+            viewModel.itemClick(festivo)
+        }
+
+        miAdaptador.onItemDeletePulsado = { festivo ->
+            viewModel.itemDeleteClick(festivo)
+        }
     }
 
     private fun initObservers() {
@@ -142,6 +150,15 @@ class Festivos : AppCompatActivity() {
             else{
                 tvFecha.text = utils.fromLocalDateToFechaLarga(estado.fecha)
                 setModoEdicion(true)
+            }
+
+            //  Sp Festivos
+            val indice = TipoFestivo.entries.find { it == estado.tipoFestivo }?.ordinal
+            if(cardSpFestivos.isEnabled && indice != null && spFestivos.selectedItem != indice){
+                spFestivos.setSelection(indice)
+            }
+            else{
+                spFestivos.setSelection(0)
             }
         }
     }

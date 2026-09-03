@@ -126,4 +126,18 @@ class FestivosViewModel @Inject constructor(
             }
         }
     }
+
+    fun itemClick(festivo: DatosFestivos){
+        _estado.update { estadoActual ->
+            estadoActual.copy(
+                msgError = null,
+                fecha = festivo.fecha,
+                tipoFestivo = festivo.tipoFestivo
+            )
+        }
+    }
+
+    fun itemDeleteClick(festivo: DatosFestivos){
+
+    }
 }

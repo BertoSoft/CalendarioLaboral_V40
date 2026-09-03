@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardFestivos"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/backcolor"
@@ -9,19 +10,49 @@
     app:cardCornerRadius="15dp"
     app:cardElevation="10dp">
 
-    <TextView
-        android:id="@+id/tvFecha"
-        style="@style/Texto"
-        android:layout_width="240dp"
-        android:layout_height="45dp"
-        android:gravity="start|center_vertical"/>
-
-    <TextView
-        android:id="@+id/tvTipoFestivo"
-        style="@style/Texto"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginStart="240dp"
-        android:gravity="center"/>
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvFecha"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/tvTipoFestivo"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:gravity="center"/>
+
+
+        </LinearLayout>
+
+        <!-- Botón de Papelera Estilizado y Minimalista -->
+        <ImageButton
+            android:id="@+id/ivDelete"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_eliminar"
+            android:tint="#F9021A"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Eliminar festivo" />
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

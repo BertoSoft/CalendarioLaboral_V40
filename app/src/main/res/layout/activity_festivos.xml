@@ -21,7 +21,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:src="@drawable/logo2"/>
+                android:src="@drawable/logo2_erimsa"/>
 
             <!-- Texto Titulo y spAno -->
             <LinearLayout
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="375dp"
                 style="@style/Tarjeta_menu_personalizada"
-                android:layout_marginBottom="24sp"/>
+                android:layout_marginBottom="36dp"/>
 
             <!-- Selector de fecha y Tipo Festivo -->
             <LinearLayout

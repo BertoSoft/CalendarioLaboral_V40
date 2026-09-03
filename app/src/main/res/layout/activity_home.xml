@@ -16,7 +16,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:src="@drawable/logo2"/>
+            android:src="@drawable/logo2_erimsa"/>
         
         <!-- Primera Fila -->
         <LinearLayout

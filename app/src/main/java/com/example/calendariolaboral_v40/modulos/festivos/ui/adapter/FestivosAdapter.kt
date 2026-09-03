@@ -5,15 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.calendariolaboral_v40.R
 import com.example.calendariolaboral_v40.core.ui.extensions.toStringRes
 import com.example.calendariolaboral_v40.core.utils.Utils
 import com.example.calendariolaboral_v40.databinding.ActivityFestivosBinding
 import com.example.calendariolaboral_v40.databinding.ItemRvFestivosBinding
 import com.example.calendariolaboral_v40.modulos.festivos.domain.model.DatosFestivos
+import com.example.calendariolaboral_v40.modulos.festivos.domain.model.TipoFestivo
 
 class FestivosAdapter(
-    private val utils: Utils
-): ListAdapter<DatosFestivos, FestivosAdapter.FestivosViewHolder>(DiffCallback) {
+    private val utils: Utils,
+    var onItemPulsado: ((DatosFestivos) -> Unit)? = null,
+    var onItemDeletePulsado: ((DatosFestivos) -> Unit)? = null
+    ): ListAdapter<DatosFestivos, FestivosAdapter.FestivosViewHolder>(DiffCallback) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -41,8 +45,30 @@ class FestivosAdapter(
         fun render(festivo: DatosFestivos, utils: Utils){
             val strFechaLarga = utils.fromLocalDateToFechaLarga(festivo.fecha)
             val strTipo = binding.root.context.getString( festivo.tipoFestivo.toStringRes())
-            binding.tvFecha.text = strFechaLarga
-            binding.tvTipoFestivo.text = strTipo
+
+            // Color de fondo
+            val color = when(festivo.tipoFestivo){
+                TipoFestivo.NACIONAL -> R.color.nacional
+                TipoFestivo.AUTONOMICO -> R.color.autonomico
+                TipoFestivo.LOCAL -> R.color.local
+                TipoFestivo.EXCESO_JORNADA -> R.color.exceso
+                TipoFestivo.CONVENIO -> R.color.convenio
+            }
+
+            with(binding){
+                tvFecha.text = strFechaLarga
+                tvTipoFestivo.text = strTipo
+                cardFestivos.setCardBackgroundColor(itemView.context.getColor(color))
+
+                // Funciones setOnClickListener
+                cardFestivos.setOnClickListener {
+                    onItemPulsado?.invoke(festivo)
+                }
+
+                ivDelete.setOnClickListener {
+                    onItemDeletePulsado?.invoke(festivo)
+                }
+            }
         }
     }
 
