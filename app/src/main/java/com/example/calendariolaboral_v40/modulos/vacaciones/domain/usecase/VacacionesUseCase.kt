@@ -33,7 +33,7 @@ class VacacionesUseCase @Inject constructor(
         val listaDiasTotales = listaSinDiasTotales.map { periodoVacaciones ->
             fecha = periodoVacaciones.fechaInicio
             diasTotales = 0
-            while (fecha.isBefore(periodoVacaciones.fechaFinal)){
+            while (fecha.isBefore(periodoVacaciones.fechaFinal) || fecha == periodoVacaciones.fechaFinal){
                 isSabado = false
                 isDomingo = false
                 if(fecha.dayOfWeek == DayOfWeek.SATURDAY) isSabado = true
@@ -42,7 +42,7 @@ class VacacionesUseCase @Inject constructor(
                     val id = festivosRepository.existeFestivo(DatosFestivos(-1, fecha, TipoFestivo.NACIONAL))
                     if(id < 0) diasTotales += 1
                 }
-                fecha.plusDays(1)
+                fecha = fecha.plusDays(1)
             }
             periodoVacaciones.copy(totalDias = diasTotales)
         }

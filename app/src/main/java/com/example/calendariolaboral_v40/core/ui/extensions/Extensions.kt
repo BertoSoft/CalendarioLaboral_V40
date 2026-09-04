@@ -26,6 +26,7 @@ fun TipoFestivo.toStringRes(): Int = when(this){
 fun Int.toDias(): String{
     return when{
         this == 1 -> "$this Día."
+        this == 0 -> "$this Días."
         this > 1 -> "$this Días."
         else -> "-- Días"
     }
