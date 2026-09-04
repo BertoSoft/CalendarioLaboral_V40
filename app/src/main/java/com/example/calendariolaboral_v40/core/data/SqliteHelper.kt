@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import com.example.calendariolaboral_v40.core.utils.Utils
 import com.example.calendariolaboral_v40.modulos.festivos.domain.model.DatosFestivos
 import com.example.calendariolaboral_v40.modulos.festivos.domain.model.TipoFestivo
+import com.example.calendariolaboral_v40.modulos.vacaciones.domain.model.DatosVacaciones
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -144,6 +145,107 @@ class MiSqliteHelper @Inject constructor (
 
         return try {
             val filasAfectadas = db.delete("festivos", where, arg)
+            filasAfectadas > 0
+        }
+        catch (e: Exception){
+            e.printStackTrace()
+            false
+        }
+    }
+
+    fun getAllVacaciones(strAno: String): List<DatosVacaciones>{
+        val lista = mutableListOf<DatosVacaciones>()
+        val utils = Utils()
+        val db: SQLiteDatabase = readableDatabase
+
+        val query = "SELECT * FROM vacaciones WHERE fecha_inicio LIKE ?"
+        val args = arrayOf("%$strAno")
+        val cursor = db.rawQuery(query, args)
+
+        if(cursor.moveToFirst()){
+            val colId = cursor.getColumnIndex("_id")
+            val colFecha1 = cursor.getColumnIndex("fecha_inicio")
+            val colFecha2 = cursor.getColumnIndex("fecha_final")
+            while (!cursor.isAfterLast){
+                val id = cursor.getInt(colId)
+                val strFecha1 = cursor.getString(colFecha1)
+                val strFecha2 = cursor.getString(colFecha2)
+                val fecha_inicio = utils.fromFechaCortaToLocalDate(strFecha1)
+                val fecha_final = utils.fromFechaCortaToLocalDate(strFecha2)
+
+                lista.add(DatosVacaciones(
+                    id,
+                    fecha_inicio,
+                    fecha_final,
+                    -1
+                ))
+
+                cursor.moveToNext()
+            }
+        }
+        cursor.close()
+        return lista
+    }
+
+    fun existeVacaciones(dato: DatosVacaciones): Int{
+        var id = -1
+        val db: SQLiteDatabase = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM vacaciones", null)
+        val utils = Utils();
+
+        if(cursor.moveToFirst()){
+            val colId = cursor.getColumnIndex("_id")
+            val colFecha1 = cursor.getColumnIndex("fecha_inicio")
+            val colFecha2 = cursor.getColumnIndex("fecha_final")
+            while (!cursor.isAfterLast){
+                val _id = cursor.getInt(colId)
+                val strFecha1 = cursor.getString(colFecha1)
+                val strFecha2 = cursor.getString(colFecha2)
+                val fecha_inicio = utils.fromFechaCortaToLocalDate(strFecha1)
+                val fecha_final = utils.fromFechaCortaToLocalDate(strFecha2)
+                // si la fecha inicial esta en el intervalo
+                if(dato.fechaInicio in fecha_inicio .. fecha_final ||
+                    dato.fechaFinal in fecha_inicio .. fecha_final
+                ){
+                    id = cursor.getInt(colId)
+                    break
+                }
+                cursor.moveToNext()
+            }
+            cursor.close()
+        }
+        return id
+    }
+
+    fun setVacaciones(dato: DatosVacaciones): Boolean{
+        val db: SQLiteDatabase = writableDatabase
+        val strFechaInicio = Utils().fromLocalDateToFechaCorta(dato.fechaInicio) ?: ""
+        val strFechaFinal = Utils().fromLocalDateToFechaCorta(dato.fechaFinal) ?: ""
+
+        val valores = ContentValues().apply {
+            put("fecha_inicio", strFechaInicio)
+            put("fecha_final", strFechaFinal)
+        }
+        return try {
+            if(dato.id < 0){
+                db.insert("vacaciones", null, valores) != -1L
+            }
+            else{
+                db.update("vacaciones", valores, "_id = ?", arrayOf(dato.id.toString())) > 0
+            }
+        }
+        catch (e: Exception){
+            false
+        }
+    }
+
+    fun delVacaciones(dato: DatosVacaciones): Boolean{
+        val db = writableDatabase
+        val where = "_id = ?"
+        val arg = arrayOf(dato.id.toString())
+
+        return try {
+            val filasAfectadas = db.delete("vacaciones", where, arg)
             filasAfectadas > 0
         }
         catch (e: Exception){

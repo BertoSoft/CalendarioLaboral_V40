@@ -32,6 +32,102 @@ class VacacionesViewModel @Inject constructor(
     private val _estado = MutableStateFlow<VacacionesUiEstado>(VacacionesUiEstado())
     val estado: StateFlow<VacacionesUiEstado> get() = _estado
 
+    fun btnGuardarClick(){
+        _estado.update { estadoActual ->
+            estadoActual.copy(
+                isCargando = true
+            )
+        }
+        viewModelScope.launch {
+            try {
+                val fechaInicio = _estado.value.fechaInicio ?: return@launch
+                val fechaFinal = _estado.value.fechaFinal ?: return@launch
+                val id = usecase.existeVacacionesUseCase(DatosVacaciones(
+                    -1,
+                    fechaInicio,
+                    fechaFinal,
+                    -1
+                ))
+                val dato = DatosVacaciones(
+                    id,
+                    fechaInicio,
+                    fechaFinal,
+                    -1
+                )
+                val todoOk = usecase.setVacacionesUseCase(dato)
+                if(todoOk){
+                    val strAno = dato.fechaInicio.year.toString()
+                    val lista = usecase.getAllVacacionesUseCase(strAno)
+
+                    _estado.update { estadoActual ->
+                        estadoActual.copy(
+                            fechaInicio = null,
+                            fechaFinal = null,
+                            lista = lista,
+                            isFechaFinActiva = false,
+                            isMostrarCalendario = false,
+                            isGuardarActivo = false,
+                            isCargando = false,
+                            msgError = null
+                        )
+                    }
+                }
+                else{
+                    _estado.update { estadoActual ->
+                        estadoActual.copy(
+                            msgError = "Se produjo un error al guardar el registro...",
+                            isFechaFinActiva = false,
+                            isMostrarCalendario = false,
+                            isGuardarActivo = false,
+                            isCargando = false
+                        )
+                    }
+                }
+            }
+            catch (e: Exception){
+                _estado.update { estadoActual ->
+                    estadoActual.copy(
+                        msgError = "Se produjo un error al guardar el registro: ${e.message}",
+                        isMostrarCalendario = false,
+                        isFechaFinActiva = false,
+                        isGuardarActivo = false,
+                        isCargando = false
+                    )
+                }
+            }
+        }
+    }
+
+    fun spAnosClick(strAno: String){
+        if(strAno == "") return
+        _estado.update { estadoActual ->
+            estadoActual.copy(
+                isCargando = true
+            )
+        }
+        viewModelScope.launch {
+            try {
+                val lista = usecase.getAllVacacionesUseCase(strAno)
+                _estado.update { estadoActual ->
+                    estadoActual.copy(
+                        lista = lista,
+                        msgError = null,
+                        isCargando = false
+                    )
+                }
+            }
+            catch (e: Exception){
+                _estado.update { estadoActual ->
+                    estadoActual.copy(
+                        lista = null,
+                        msgError = "Se produjo un errror : ${e.message}",
+                        isCargando = false
+                    )
+                }
+            }
+        }
+    }
+
     fun tvFechaInicialClick(ano: Int, mes: Int, dia: Int){
         if(ano < 0)return
         val fechaInicio: LocalDate? = LocalDate.of(ano, mes, dia)

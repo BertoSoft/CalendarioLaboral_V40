@@ -5,25 +5,25 @@ import com.example.calendariolaboral_v40.modulos.festivos.domain.repository.Fest
 import javax.inject.Inject
 
 class FestivosUseCase @Inject constructor(
-    private val repository: FestivosRepository
+    private val festivosRepository: FestivosRepository
 ) {
 
     suspend fun getAllFestivosUseCase(strAno: String): List<DatosFestivos> {
-        val lista: List<DatosFestivos> = repository.getAllFestivos(strAno)
+        val lista: List<DatosFestivos> = festivosRepository.getAllFestivos(strAno)
         return lista.sortedBy { it.fecha }
     }
 
     suspend fun existeFestivoUseCase(dato: DatosFestivos): Int{
-        return repository.existeFestivo(dato)
+        return festivosRepository.existeFestivo(dato)
     }
 
     suspend fun setFestivoUseCase(dato: DatosFestivos): Boolean{
         val id = existeFestivoUseCase(dato)
         val datoNuevo = dato.copy(id = id)
-        return repository.setFestivo(datoNuevo)
+        return festivosRepository.setFestivo(datoNuevo)
     }
 
     suspend fun  delFestivoUseCase(dato: DatosFestivos): Boolean{
-        return repository.delFestivos(dato)
+        return festivosRepository.delFestivos(dato)
     }
 }

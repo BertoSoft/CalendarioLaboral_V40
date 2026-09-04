@@ -20,3 +20,13 @@ fun TipoFestivo.toStringRes(): Int = when(this){
     TipoFestivo.EXCESO_JORNADA -> R.string.EXCESO_JORNADA
     TipoFestivo.CONVENIO -> R.string.CONVENIO
 }
+
+// Esto es un colector de funciones de extension
+
+fun Int.toDias(): String{
+    return when{
+        this == 1 -> "$this Día."
+        this > 1 -> "$this Días."
+        else -> "-- Días"
+    }
+}

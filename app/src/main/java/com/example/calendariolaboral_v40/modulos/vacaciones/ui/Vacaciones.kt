@@ -4,17 +4,22 @@ import android.app.DatePickerDialog
 import android.app.LocaleConfig
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Visibility
 import com.example.calendariolaboral_v40.R
 import com.example.calendariolaboral_v40.core.utils.Utils
 import com.example.calendariolaboral_v40.databinding.ActivityVacacionesBinding
+import com.example.calendariolaboral_v40.modulos.vacaciones.ui.adapter.VacacionesAdapter
 import com.example.calendariolaboral_v40.modulos.vacaciones.ui.viewmodel.VacacionesUiEstado
 import com.example.calendariolaboral_v40.modulos.vacaciones.ui.viewmodel.VacacionesViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +33,7 @@ class Vacaciones: AppCompatActivity() {
     @Inject lateinit var utils: Utils
     private lateinit var binding: ActivityVacacionesBinding
     private val viewModel: VacacionesViewModel by viewModels()
+    private val miAdaptador by lazy { VacacionesAdapter(utils) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +65,26 @@ class Vacaciones: AppCompatActivity() {
                     viewModel.tvFechaFinalClick(ano, mes, dia)
                 }
             }
+
+            spAnos.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                override fun onItemSelected(
+                    p0: AdapterView<*>?,
+                    p1: View?,
+                    p2: Int,
+                    p3: Long
+                ) {
+                    val strAno = p0?.selectedItem.toString()
+                    viewModel.spAnosClick(strAno)
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                }
+
+            }
+
+            btnGuardar.setOnClickListener {
+                viewModel.btnGuardarClick()
+            }
         }
 
     }
@@ -86,6 +112,7 @@ class Vacaciones: AppCompatActivity() {
             }
 
             // 1.- RecyclerView
+            miAdaptador.submitList(estado.lista)
 
             // 2.- Fechas
             var strFechaInicio = ""
@@ -127,6 +154,11 @@ class Vacaciones: AppCompatActivity() {
     }
 
     private fun initRv() {
+        with(binding.rvVacaciones){
+            layoutManager = LinearLayoutManager(this@Vacaciones)
+            adapter = miAdaptador
+            setHasFixedSize(true)
+        }
 
     }
 
