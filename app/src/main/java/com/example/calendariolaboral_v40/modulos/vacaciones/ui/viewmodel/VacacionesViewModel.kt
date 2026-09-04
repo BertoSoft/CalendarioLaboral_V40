@@ -179,6 +179,11 @@ class VacacionesViewModel @Inject constructor(
                 val lista = usecase.getAllVacacionesUseCase(strAno)
                 _estado.update { estadoActual ->
                     estadoActual.copy(
+                        fechaInicio = null,
+                        fechaFinal = null,
+                        isMostrarCalendario = false,
+                        isFechaFinActiva = false,
+                        isGuardarActivo = false,
                         lista = lista,
                         msgError = null,
                         isCargando = false
@@ -188,6 +193,11 @@ class VacacionesViewModel @Inject constructor(
             catch (e: Exception){
                 _estado.update { estadoActual ->
                     estadoActual.copy(
+                        fechaInicio = null,
+                        fechaFinal = null,
+                        isMostrarCalendario = false,
+                        isFechaFinActiva = false,
+                        isGuardarActivo = false,
                         lista = null,
                         msgError = "Se produjo un errror : ${e.message}",
                         isCargando = false

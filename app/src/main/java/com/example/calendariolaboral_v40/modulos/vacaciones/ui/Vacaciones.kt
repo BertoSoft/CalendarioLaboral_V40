@@ -53,14 +53,28 @@ class Vacaciones: AppCompatActivity() {
     private fun initListeners() {
         with(binding){
             cardFechaInicial.setOnClickListener {
-                val fecha = LocalDate.now()
+                var fecha: LocalDate
+                if(tvFechaInicio.text != "--/--/----"){
+                    fecha = utils.fromFechaCortaToLocalDate(tvFechaInicio.text.toString())
+                }
+                else{
+                    fecha = LocalDate.now()
+                }
+                fecha = fecha.plusMonths(-1)
                 mostrarCalendario("Fecha inicial del periodo\n", fecha){ ano, mes, dia ->
                     viewModel.tvFechaInicialClick(ano, mes , dia)
                 }
             }
 
             cardFechaFinal.setOnClickListener {
-                val fecha = LocalDate.now()
+                var fecha: LocalDate
+                if(tvFechaInicio.text != "--/--/----"){
+                    fecha = utils.fromFechaCortaToLocalDate(tvFechaInicio.text.toString())
+                }
+                else{
+                    fecha = LocalDate.now()
+                }
+                fecha = fecha.plusMonths(-1)
                 mostrarCalendario("Fecha final del periodo\n", fecha){ ano, mes, dia ->
                     viewModel.tvFechaFinalClick(ano, mes, dia)
                 }
@@ -128,8 +142,15 @@ class Vacaciones: AppCompatActivity() {
             cardFechaFinal.isEnabled = estado.isFechaFinActiva
 
             // 3.- Si la fechaFinal esta habilitada y su valor es "", lanzamos mostrarcalendario
-            val fecha = LocalDate.now()
             if(estado.isMostrarCalendario){
+                var fecha: LocalDate
+                if(tvFechaInicio.text != "--/--/----"){
+                    fecha = utils.fromFechaCortaToLocalDate(tvFechaInicio.text.toString())
+                }
+                else{
+                    fecha = LocalDate.now()
+                }
+                fecha = fecha.plusMonths(-1)
                 mostrarCalendario( "Fecha final del periodo\n", fecha){ ano, mes, dia ->
                     viewModel.tvFechaFinalClick(ano, mes, dia)
                     viewModel.clearMostrarCalendario()
