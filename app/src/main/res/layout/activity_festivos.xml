@@ -19,7 +19,7 @@
             <!-- Imagen Logo -->
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="75dp"
                 android:src="@drawable/logo2_erimsa"/>
 
             <!-- Texto Titulo y spAno -->
@@ -57,18 +57,30 @@
             </LinearLayout>
 
             <!-- RecyclerView -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvFestivos"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="360dp"
                 style="@style/Tarjeta_menu_personalizada"
-                android:layout_marginBottom="24dp"/>
+                android:padding="8dp"
+                android:layout_marginBottom="36dp"
+                android:background="@color/sp_activo">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvFestivos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/Tarjeta_menu_personalizada"
+                    android:background="@color/sp_activo"/>
+
+            </androidx.cardview.widget.CardView>
+
+
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/secundario"
-                android:layout_marginBottom="12sp"/>
+                android:layout_marginBottom="16dp"/>
 
             <!-- Selector de fecha y Tipo Festivo -->
             <LinearLayout

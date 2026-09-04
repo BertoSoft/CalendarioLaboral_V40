@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.calendariolaboral_v40.core.utils.Utils
 import com.example.calendariolaboral_v40.modulos.vacaciones.domain.model.DatosVacaciones
 import com.example.calendariolaboral_v40.modulos.vacaciones.domain.usecase.VacacionesUseCase
+import com.example.calendariolaboral_v40.modulos.vacaciones.ui.Vacaciones
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -31,6 +32,74 @@ class VacacionesViewModel @Inject constructor(
 
     private val _estado = MutableStateFlow<VacacionesUiEstado>(VacacionesUiEstado())
     val estado: StateFlow<VacacionesUiEstado> get() = _estado
+
+    fun itemClick(vacaciones: DatosVacaciones){
+        _estado.update { estadoActual ->
+            estadoActual.copy(
+                fechaInicio = vacaciones.fechaInicio,
+                fechaFinal = vacaciones.fechaFinal,
+                isMostrarCalendario = false,
+                isFechaFinActiva = true,
+                isGuardarActivo = true
+            )
+        }
+    }
+
+    fun itemDeleteClick(vacaciones: DatosVacaciones){
+        _estado.update { estadoActual ->
+            estadoActual.copy(
+                isCargando = true
+            )
+        }
+
+        viewModelScope.launch {
+            try {
+                val todoOk = usecase.deleteVacacionesUseCase(vacaciones)
+                if(todoOk){
+                    val strAno = vacaciones.fechaInicio.year.toString()
+                    val lista = usecase.getAllVacacionesUseCase(strAno)
+                    _estado.update { estadoActual ->
+                        estadoActual.copy(
+                            fechaInicio = null,
+                            fechaFinal = null,
+                            lista = lista,
+                            isMostrarCalendario = false,
+                            isFechaFinActiva = true,
+                            isGuardarActivo = true,
+                            msgError = null,
+                            isCargando = false
+                        )
+                    }
+                }
+                else{
+                    _estado.update { estadoActual ->
+                        estadoActual.copy(
+                            fechaInicio = null,
+                            fechaFinal = null,
+                            isMostrarCalendario = false,
+                            isFechaFinActiva = false,
+                            isGuardarActivo = false,
+                            isCargando = false,
+                            msgError = "No se puede eliminar el registro"
+                        )
+                    }
+                }
+            }
+            catch (e: Exception){
+                _estado.update { estadoActual ->
+                    estadoActual.copy(
+                        fechaInicio = null,
+                        fechaFinal = null,
+                        isMostrarCalendario = false,
+                        isFechaFinActiva = false,
+                        isGuardarActivo = false,
+                        isCargando = false,
+                        msgError = "No se puede eliminar el registro: ${e.message}"
+                    )
+                }
+            }
+        }
+    }
 
     fun btnGuardarClick(){
         _estado.update { estadoActual ->

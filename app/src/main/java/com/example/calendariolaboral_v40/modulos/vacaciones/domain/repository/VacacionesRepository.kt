@@ -8,4 +8,6 @@ interface VacacionesRepository {
     suspend fun existeVacaciones(dato: DatosVacaciones): Int
 
     suspend fun setVacaciones(dato: DatosVacaciones): Boolean
+
+    suspend fun deleteVacaciones(vacaciones: DatosVacaciones): Boolean
 }

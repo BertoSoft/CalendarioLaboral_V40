@@ -56,4 +56,8 @@ class VacacionesUseCase @Inject constructor(
     suspend fun setVacacionesUseCase(dato: DatosVacaciones): Boolean{
         return vacacionesRepository.setVacaciones(dato)
     }
+
+    suspend fun deleteVacacionesUseCase(vacaciones: DatosVacaciones): Boolean{
+        return vacacionesRepository.deleteVacaciones(vacaciones)
+    }
 }

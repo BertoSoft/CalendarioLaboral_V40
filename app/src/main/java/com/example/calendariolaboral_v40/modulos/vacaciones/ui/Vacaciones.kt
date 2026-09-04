@@ -160,6 +160,14 @@ class Vacaciones: AppCompatActivity() {
             setHasFixedSize(true)
         }
 
+        miAdaptador.onItemPulsado  = { vacaciones ->
+            viewModel.itemClick(vacaciones)
+        }
+
+        miAdaptador.onItemDelete = { vacaciones ->
+            viewModel.itemDeleteClick(vacaciones)
+        }
+
     }
 
     private fun initSp() {

@@ -21,7 +21,7 @@
             <!-- Imagen Logo -->
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="75dp"
                 android:src="@drawable/logo2_erimsa"/>
 
             <!-- Titulo y SpAno -->
@@ -61,18 +61,28 @@
             </LinearLayout>
 
             <!-- RecyclerView -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvVacaciones"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="360dp"
                 style="@style/Tarjeta_menu_personalizada"
-                android:layout_marginBottom="24sp" />
+                android:padding="4dp"
+                android:layout_marginBottom="36dp"
+                android:background="@color/sp_activo">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvVacaciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="360dp"
+                    style="@style/Tarjeta_menu_personalizada"
+                    android:background="@color/sp_activo"/>
+
+            </androidx.cardview.widget.CardView>
 
             <!-- Linea -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginBottom="12sp"
+                android:layout_marginBottom="16dp"
                 android:background="@color/secundario"/>
 
             <!-- Textpo Introduccion Seleccion fechas -->
@@ -88,14 +98,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="18sp"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardFechaInicial"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:layout_margin="6dp"
                     style="@style/Tarjeta_menu_personalizada"
                     app:cardBackgroundColor="@color/selector_spinner_back_color"
                     android:layout_weight="1">

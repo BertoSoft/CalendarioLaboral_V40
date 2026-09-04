@@ -30,4 +30,10 @@ class VacacionesRepositoryImpl @Inject constructor(
             dbHelper.setVacaciones(dato)
         }
     }
+
+    override suspend fun deleteVacaciones(vacaciones: DatosVacaciones): Boolean {
+        return withContext(coroutine){
+            dbHelper.delVacaciones(vacaciones)
+        }
+    }
 }

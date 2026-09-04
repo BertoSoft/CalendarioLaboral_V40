@@ -41,9 +41,12 @@ class VacacionesAdapter(
     ): RecyclerView.ViewHolder(binding.root){
         fun render( vacaciones: DatosVacaciones, utils: Utils){
 
-            val strFechaInicio = utils.fromLocalDateToFechaLarga(vacaciones.fechaInicio)
-            val strFechaFinal = utils.fromLocalDateToFechaLarga(vacaciones.fechaFinal)
-            val strDias = vacaciones.totalDias.toDias()
+            val strFechaInicio = "Del, " +
+                    utils.fromLocalDateToFechaLarga(vacaciones.fechaInicio)
+            val strFechaFinal = "al, " +
+                    utils.fromLocalDateToFechaLarga(vacaciones.fechaFinal)
+            val strDias = "Días de vacaciones, " +
+                    vacaciones.totalDias.toDias()
 
             with(binding){
                 tvFechaInicio.text = strFechaInicio
