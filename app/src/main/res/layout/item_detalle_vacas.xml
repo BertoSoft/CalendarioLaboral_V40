@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardItemVacDetalle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    style="@style/Tarjeta_menu_personalizada"
+    app:cardBackgroundColor="@color/backcolor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!--  Icono de Calendario a la izquierda  -->
+        <ImageView
+            android:id="@+id/ivDetalleIcono"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:padding="8dp"
+            android:src="@drawable/calendar_svgrepo_com"
+            android:importantForAccessibility="no"/>
+
+        <!--  Contenedor vertical para apilar los textos  -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:orientation="vertical">
+
+            <!--  Rango de Fechas (Elemento principal arriba)  -->
+            <TextView
+                android:id="@+id/tvDetalleFechas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Del --/--/---- al --/--/----"
+                android:textAlignment="center"
+                style="@style/Texto_16"
+                android:textStyle="bold"
+                android:textColor="@color/secundario"/>
+
+            <!--  Contador de Días (Ubicado justo debajo de las fechas)  -->
+            <TextView
+                android:id="@+id/tvDetalleTotalDias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Días laborables: 21 Días."
+                style="@style/Texto_16"
+                android:textColor="@color/secundario"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

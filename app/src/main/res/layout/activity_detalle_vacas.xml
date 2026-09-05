@@ -28,15 +28,15 @@
             <!-- Titulo y Spinner -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="18sp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:gravity="center"
+                    android:gravity="center_vertical"
                     android:layout_marginEnd="8dp"
                     style="@style/TextoTitulos"
                     android:textSize="20dp"
@@ -46,7 +46,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1.5"
-                    android:layout_marginEnd="8dp"
                     style="@style/Tarjeta_menu_personalizada"
                     app:cardBackgroundColor="@color/selector_spinner_back_color">
 
@@ -66,14 +65,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
+                android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:gravity="center"
+                    android:gravity="center_vertical"
                     android:layout_marginEnd="8dp"
                     style="@style/Texto_16"
                     android:text="Vacaciones de años anteriores"/>
@@ -85,7 +84,7 @@
                     app:cardBackgroundColor="@color/primario">
 
                     <TextView
-                        android:id="@+id/tvVacacionesPendientes"
+                        android:id="@+id/tvAtrasadas"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/primario"
@@ -108,12 +107,36 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvVacaciones"
                     android:layout_width="match_parent"
-                    android:layout_height="360dp"
+                    android:layout_height="380dp"
                     style="@style/Tarjeta_menu_personalizada"
                     android:background="@color/sp_activo"/>
 
             </androidx.cardview.widget.CardView>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvDisfrutadas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Texto_16"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"
+                    android:text="Vacaciones Disfrutadas:\t\t\t6 Días."/>
+
+                <TextView
+                    android:id="@+id/tvPendientes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Texto_16"
+                    android:textStyle="bold"
+                    android:text="Vacaciones Pendientes:\t\t\t36 Días."/>
+
+
+            </LinearLayout>
 
         </LinearLayout>
 

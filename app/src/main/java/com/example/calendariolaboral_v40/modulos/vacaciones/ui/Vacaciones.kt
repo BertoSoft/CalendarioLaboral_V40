@@ -2,6 +2,8 @@ package com.example.calendariolaboral_v40.modulos.vacaciones.ui
 
 import android.app.DatePickerDialog
 import android.app.LocaleConfig
+import android.content.ClipData
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -19,6 +21,7 @@ import androidx.transition.Visibility
 import com.example.calendariolaboral_v40.R
 import com.example.calendariolaboral_v40.core.utils.Utils
 import com.example.calendariolaboral_v40.databinding.ActivityVacacionesBinding
+import com.example.calendariolaboral_v40.modulos.detallevacas.ui.DetalleVacas
 import com.example.calendariolaboral_v40.modulos.vacaciones.ui.adapter.VacacionesAdapter
 import com.example.calendariolaboral_v40.modulos.vacaciones.ui.viewmodel.VacacionesUiEstado
 import com.example.calendariolaboral_v40.modulos.vacaciones.ui.viewmodel.VacacionesViewModel
@@ -98,6 +101,13 @@ class Vacaciones: AppCompatActivity() {
 
             btnGuardar.setOnClickListener {
                 viewModel.btnGuardarClick()
+            }
+
+            btnDetalleVacas.setOnClickListener {
+                val intent = Intent(this@Vacaciones, DetalleVacas::class.java)
+                val strAno = spAnos.selectedItem.toString()
+                intent.putExtra("strAno", strAno)
+                startActivity(intent)
             }
         }
 
