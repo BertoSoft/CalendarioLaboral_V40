@@ -24,21 +24,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <androidx.cardview.widget.CardView
+                <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    style="@style/TextoTarjetaMenu"
                     android:layout_gravity="center"
-                    android:backgroundTint="@color/secundario"
-                    app:cardCornerRadius="50dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/detalle"/>
-
-                </androidx.cardview.widget.CardView>
-
+                    android:src="@drawable/prismaticos"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -48,10 +38,9 @@
                     android:src="@drawable/logo2_erimsa"/>
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:visibility="invisible"/>
-
 
             </LinearLayout>
 
