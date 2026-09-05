@@ -15,14 +15,38 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16sp"
+            android:padding="16dp"
             android:orientation="vertical">
 
             <!-- Imagen Logo -->
-            <ImageView
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:src="@drawable/logo2_erimsa"/>
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/prismaticos"
+                    android:background="@color/backcolor"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="75dp"
+                    android:background="@color/backcolor"
+                    android:src="@drawable/logo2_erimsa"/>
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:visibility="invisible"/>
+
+
+            </LinearLayout>
 
             <!-- Titulo y SpAno -->
             <LinearLayout
@@ -199,6 +223,7 @@
     </ScrollView>
     <!-- 2. UBICACIÓN CLAVE: El ProgressBar se añade al final de la jerarquía
          para que flote en el centro absoluto, tapando la pantalla al cargar -->
+
     <ProgressBar
         android:id="@+id/pbCargando"
         android:layout_width="60dp"
