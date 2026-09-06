@@ -1,6 +1,5 @@
 package com.example.calendariolaboral_v40.modulos.excesos.ui
 
-import android.R
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -8,9 +7,9 @@ import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.calendariolaboral_v40.R
 import com.example.calendariolaboral_v40.core.ui.extensions.toDias
 import com.example.calendariolaboral_v40.core.ui.extensions.toHoras
 import com.example.calendariolaboral_v40.databinding.ActivityExcesosBinding
@@ -78,14 +77,14 @@ class Excesos : AppCompatActivity() {
 
     private fun initListeners() {
         with(binding){
-            spAnioExcesos.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            spAnos.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
                 override fun onItemSelected(
                     p0: AdapterView<*>?,
                     p1: View?,
                     p2: Int,
                     p3: Long
                 ) {
-                    val strAno = spAnioExcesos.selectedItem.toString()
+                    val strAno = spAnos.selectedItem.toString()
                     viewModel.spAnoClick(strAno)
                 }
 
@@ -101,13 +100,15 @@ class Excesos : AppCompatActivity() {
         val listaAnos = ((ano + 1)downTo 2022).map{ it.toString() }
         val miAdapter = ArrayAdapter(
             this,
-            R.layout.simple_spinner_item,
+            R.layout.item_sp_anos,
+            R.id.tvSp,
             listaAnos
         )
+        miAdapter.setDropDownViewResource(R.layout.item_sp_anos)
         with(binding){
-            spAnioExcesos.adapter = miAdapter
-            if(spAnioExcesos.selectedItemPosition != 1){
-                spAnioExcesos.setSelection(1)
+            spAnos.adapter = miAdapter
+            if(spAnos.selectedItemPosition != 1){
+                spAnos.setSelection(1)
             }
         }
     }
