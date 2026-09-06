@@ -16,6 +16,7 @@
     <color name="sp_activo">#EFC0F8</color>
     <color name="btn_activo">#5C73E8</color>
     <color name="gris_oscuro">#4E5252</color>
+    <color name="texto_excesos">#000000</color>
 
     <color name="nacional">#D94E45</color>
     <color name="autonomico">#3C99E3</color>

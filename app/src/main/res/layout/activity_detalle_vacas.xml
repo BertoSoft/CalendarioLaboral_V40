@@ -15,7 +15,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:padding="16dp"
             android:orientation="vertical">
 
@@ -78,7 +78,7 @@
                     android:text="Vacaciones de años anteriores"/>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="50dp"
+                    android:layout_width="75dp"
                     android:layout_height="50dp"
                     style="@style/Tarjeta_menu_personalizada"
                     app:cardBackgroundColor="@color/primario">
@@ -88,7 +88,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/primario"
-                        android:layout_gravity="center"/>
+                        android:text="0 Dias."
+                        android:gravity="center"
+                        android:textStyle="bold"/>
 
                 </androidx.cardview.widget.CardView>
 

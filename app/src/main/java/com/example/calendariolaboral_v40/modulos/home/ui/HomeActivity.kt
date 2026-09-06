@@ -8,6 +8,7 @@ import com.example.calendariolaboral_v40.R
 import com.example.calendariolaboral_v40.databinding.ActivityHomeBinding
 import com.example.calendariolaboral_v40.modulos.home.extensions.setTextosyEmojis
 import com.example.calendariolaboral_v40.core.ui.extensions.animacionClick
+import com.example.calendariolaboral_v40.modulos.excesos.ui.Excesos
 import com.example.calendariolaboral_v40.modulos.festivos.ui.Festivos
 import com.example.calendariolaboral_v40.modulos.vacaciones.ui.Vacaciones
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,7 +43,8 @@ class HomeActivity : AppCompatActivity() {
             cardVacaciones.miCardView.setOnClickListener {
                 cardVacaciones.miCardView.animacionClick{
                     val intent = Intent(this@HomeActivity, Vacaciones::class.java)
-                    startActivity(intent)                }
+                    startActivity(intent)
+                }
             }
             cardBackup.miCardView.setOnClickListener {
                 cardBackup.miCardView.animacionClick{
@@ -51,8 +53,8 @@ class HomeActivity : AppCompatActivity() {
             }
             cardExcesoJornadas.miCardView.setOnClickListener {
                 cardExcesoJornadas.miCardView.animacionClick{
-                    Toast.makeText(this@HomeActivity, "Abriendo Exceso de Jornadas...", Toast.LENGTH_SHORT).show()
-                }
+                    val intent = Intent(this@HomeActivity, Excesos::class.java)
+                    startActivity(intent)                  }
             }
             cardCalendarioLaboral.miCardView.setOnClickListener {
                 cardCalendarioLaboral.miCardView.animacionClick{

@@ -34,6 +34,10 @@
             android:name=".modulos.detallevacas.ui.DetalleVacas"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".modulos.excesos.ui.Excesos"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
