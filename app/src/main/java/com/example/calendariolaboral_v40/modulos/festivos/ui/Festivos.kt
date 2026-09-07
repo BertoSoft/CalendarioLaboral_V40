@@ -32,6 +32,7 @@ class Festivos : AppCompatActivity() {
     private lateinit var binding:  ActivityFestivosBinding
     private val miAdaptador by lazy { FestivosAdapter(utils) }
     private val viewModel: FestivosViewModel by viewModels()
+    private var fecha: LocalDate? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,11 +87,17 @@ class Festivos : AppCompatActivity() {
             }
 
             tvFecha.setOnClickListener {
-                val fecha = LocalDate.now()
+                if(fecha == null){
+                    val ano = binding.spAnos.selectedItem.toString().toInt()
+                    fecha = LocalDate.of(ano, 1,1)
+                }
+                val indiceFestivos = binding.spFestivos.selectedItemPosition
                 mostrarCalendario(
                     "Elige una fecha para el día festivo",
-                    fecha,
-                    {ano, mes, dia -> viewModel.tvFechaClick(ano, mes, dia)}
+                    fecha!!,
+                    {ano, mes, dia ->
+                        viewModel.tvFechaClick(ano, mes, dia, indiceFestivos)
+                    }
                 )
             }
 
@@ -149,6 +156,7 @@ class Festivos : AppCompatActivity() {
             else{
                 tvFecha.text = utils.fromLocalDateToFechaLarga(estado.fecha)
                 setModoEdicion(true)
+                fecha = estado.fecha
             }
 
             // 3.- Spinner Festivos (Estructura de ifs corregida)
@@ -221,7 +229,7 @@ class Festivos : AppCompatActivity() {
         fechaSeleccionada: (Int, Int, Int) -> Unit
     ){
         val ano = fecha.year
-        val mes = fecha.monthValue
+        val mes = fecha.monthValue - 1
         val dia = fecha.dayOfMonth
 
         val datePicker = DatePickerDialog(

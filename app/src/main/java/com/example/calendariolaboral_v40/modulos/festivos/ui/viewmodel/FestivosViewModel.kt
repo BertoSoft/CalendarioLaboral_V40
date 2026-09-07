@@ -73,13 +73,15 @@ class FestivosViewModel @Inject constructor(
         }
     }
 
-    fun tvFechaClick(ano: Int, mes: Int, dia: Int) {
+    fun tvFechaClick(ano: Int, mes: Int, dia: Int, indiceFestivos: Int) {
         if(ano < 0) return
         val fecha = LocalDate.of(ano, mes, dia)
+        val tipoFestivo = TipoFestivo.entries[indiceFestivos]
         if(fecha != null){
             _estado.update { estadoActual ->
                 estadoActual.copy(
                     fecha = fecha,
+                    tipoFestivo = tipoFestivo,
                     msgError = null
                 )
             }
@@ -88,7 +90,9 @@ class FestivosViewModel @Inject constructor(
 
     fun btnGuardarClick() {
         _estado.update { estadoActual ->
-            estadoActual.copy(isCargando = true)
+            estadoActual.copy(
+                isCargando = true,
+            )
         }
         viewModelScope.launch {
             try {

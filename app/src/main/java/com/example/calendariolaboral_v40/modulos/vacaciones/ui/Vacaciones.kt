@@ -37,6 +37,7 @@ class Vacaciones: AppCompatActivity() {
     private lateinit var binding: ActivityVacacionesBinding
     private val viewModel: VacacionesViewModel by viewModels()
     private val miAdaptador by lazy { VacacionesAdapter(utils) }
+    private var fecha: LocalDate? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,15 +57,17 @@ class Vacaciones: AppCompatActivity() {
     private fun initListeners() {
         with(binding){
             cardFechaInicial.setOnClickListener {
-                var fecha: LocalDate
                 if(tvFechaInicio.text != "--/--/----"){
                     fecha = utils.fromFechaCortaToLocalDate(tvFechaInicio.text.toString())
                 }
                 else{
-                    fecha = LocalDate.now()
+                    if(fecha == null){
+                        val ano = binding.spAnos.selectedItem.toString().toInt()
+                        fecha = LocalDate.of(ano, 1, 1)
+                    }
                 }
-                fecha = fecha.plusMonths(-1)
-                mostrarCalendario("Fecha inicial del periodo\n", fecha){ ano, mes, dia ->
+                fecha = fecha?.plusMonths(-1)
+                mostrarCalendario("Fecha inicial del periodo\n", fecha!!){ ano, mes, dia ->
                     viewModel.tvFechaInicialClick(ano, mes , dia)
                 }
             }
@@ -143,6 +146,7 @@ class Vacaciones: AppCompatActivity() {
             var strFechaFinal = ""
             if(estado.fechaInicio != null){
                 strFechaInicio = utils.fromLocalDateToFechaCorta(estado.fechaInicio)
+                fecha = estado.fechaInicio
             }
             if(estado.fechaFinal != null){
                 strFechaFinal = utils.fromLocalDateToFechaCorta(estado.fechaFinal)
