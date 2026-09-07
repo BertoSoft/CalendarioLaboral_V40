@@ -5,6 +5,7 @@ import java.time.LocalDate
 
 data class DatosCalendario(
     val fecha: LocalDate?,
+    val isHoy: Boolean,
     val isNacional: Boolean,
     val isAutonomico: Boolean,
     val isLocal: Boolean,

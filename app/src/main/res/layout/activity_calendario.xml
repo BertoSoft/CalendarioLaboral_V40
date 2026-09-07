@@ -92,7 +92,7 @@
                     android:id="@+id/rvCalendarioDias"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="8dp"
+                    android:padding="4dp"
                     android:clipToPadding="false"/>
 
             </androidx.cardview.widget.CardView>
@@ -285,12 +285,12 @@
                             <View
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:background="@color/white"
+                                android:background="@color/azul"
                                 android:layout_marginEnd="8dp"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Días Laborables"
+                                android:text="Hoy"
                                 android:textColor="@color/texto_excesos"
                                 android:textSize="13sp" />
                         </LinearLayout>

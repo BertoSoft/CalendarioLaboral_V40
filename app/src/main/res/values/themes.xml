@@ -18,7 +18,7 @@
     <!-- Estilo opcional para centralizar también el diseño del texto interno -->
     <style name="TextoTarjetaMenu">
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:layout_gravity">center</item>
     </style>
 
