@@ -9,6 +9,7 @@ import com.example.calendariolaboral_v40.databinding.ActivityHomeBinding
 import com.example.calendariolaboral_v40.modulos.home.extensions.setTextosyEmojis
 import com.example.calendariolaboral_v40.core.ui.extensions.animacionClick
 import com.example.calendariolaboral_v40.modulos.backup.ui.Backup
+import com.example.calendariolaboral_v40.modulos.calendario.ui.Calendario
 import com.example.calendariolaboral_v40.modulos.excesos.ui.Excesos
 import com.example.calendariolaboral_v40.modulos.festivos.ui.Festivos
 import com.example.calendariolaboral_v40.modulos.vacaciones.ui.Vacaciones
@@ -60,7 +61,8 @@ class HomeActivity : AppCompatActivity() {
             }
             cardCalendarioLaboral.miCardView.setOnClickListener {
                 cardCalendarioLaboral.miCardView.animacionClick{
-                    Toast.makeText(this@HomeActivity, "Abriendo Calendario Laboral...", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@HomeActivity, Calendario::class.java)
+                    startActivity(intent)
                 }
             }
         }
