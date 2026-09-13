@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backcolor"
+    android:background="@color/background_app"
     tools:context=".modulos.calendario.ui.Calendario">
 
     <ScrollView
@@ -18,10 +18,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16sp"
+            android:padding="16dp"
             android:orientation="vertical">
 
-            <!-- CABECERA OPTIMIZADA: TÍTULO Y SELECTORES A ANCHO COMPLETO -->
+            <!-- CABECERA: TÍTULO Y SELECTORES -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,14 +35,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="CALENDARIO"
-                    android:textColor="@color/primario"
-                    android:textSize="32sp"
+                    style="@style/TextoTitulos"
                     android:textAlignment="center"
-                    android:textStyle="bold"
-                    android:letterSpacing="-0.02"
                     android:layout_marginBottom="16dp" />
 
-                <!-- Fila de Selectores al 50% de ancho cada uno -->
+                <!-- Fila de Selectores (Spinners) -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -50,142 +47,104 @@
                     android:baselineAligned="false">
 
                     <!-- Spinner de Mes -->
-                    <Spinner
-                        android:id="@+id/spMesCalendario"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="6dp"/>
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.4"
+                        android:layout_margin="4dp"
+                        style="@style/Tarjeta_menu_personalizada"
+                        app:cardBackgroundColor="@color/selector_spinner_back_color">
+
+                        <Spinner
+                            android:id="@+id/spMesCalendario"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="6dp"/>
+
+                    </androidx.cardview.widget.CardView>
+
 
                     <!-- Spinner de Año -->
-                    <Spinner
-                        android:id="@+id/spAnioCalendario"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
-                        android:layout_height="48dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:layout_marginStart="6dp" />
+                        android:layout_margin="4dp"
+                        style="@style/Tarjeta_menu_personalizada"
+                        app:cardBackgroundColor="@color/selector_spinner_back_color">
+
+                        <Spinner
+                            android:id="@+id/spAnioCalendario"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="6dp"/>
+
+                    </androidx.cardview.widget.CardView>
+
+
 
                 </LinearLayout>
 
             </LinearLayout>
-
             <!-- SECCIÓN DEL CALENDARIO DE MATRIZ -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="DISTRIBUCIÓN DE JORNADAS"
-                android:textColor="@color/secundario"
+                android:textColor="@color/primary"
                 android:textSize="11sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="16sp"
-                android:letterSpacing="0.05" />
+                android:letterSpacing="0.05"
+                android:layout_marginBottom="8dp"/>
 
-            <!--- Dias de la semana -->
+            <!--- Días de la semana -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    style="@style/Texto"
-                    android:gravity="center"
-                    android:text="L"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    style="@style/Texto"
-                    android:gravity="center"
-                    android:text="M"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    style="@style/Texto"
-                    android:gravity="center"
-                    android:text="X"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    style="@style/Texto"
-                    android:gravity="center"
-                    android:text="J"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    style="@style/Texto"
-                    android:gravity="center"
-                    android:text="V"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    style="@style/Texto"
-                    android:gravity="center"
-                    android:text="S"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    style="@style/Texto"
-                    android:gravity="center"
-                    android:text="D"/>
-
+                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16" android:gravity="center" android:text="L"/>
+                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16" android:gravity="center" android:text="M"/>
+                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16" android:gravity="center" android:text="X"/>
+                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16" android:gravity="center" android:text="J"/>
+                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16" android:gravity="center" android:text="V"/>
+                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16" android:textColor="@color/cal_weekend_text" android:gravity="center" android:text="S"/>
+                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16" android:textColor="@color/cal_weekend_text" android:gravity="center" android:text="D"/>
 
             </LinearLayout>
 
-            <androidx.cardview.widget.CardView
+            <!-- Tarjeta Contenedora de la cuadrícula -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCalendarioDias"
                 android:layout_width="match_parent"
-                android:layout_height="290dp"
-                android:layout_marginBottom="24dp"
-                style="@style/Tarjeta_menu_personalizada"
-                app:cardBackgroundColor="@color/sp_activo">
-
-                <!-- REEMPLAZADO: GridView por RecyclerView -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvCalendarioDias"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="4dp"
-                    android:clipToPadding="false"/>
-
-            </androidx.cardview.widget.CardView>
+                android:layout_height="320dp"
+                android:background="@color/background_app"
+                android:clipToPadding="false"/>
 
             <!-- DIVISOR ESTILIZADO -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/secundario"
+                android:background="@color/divider"
                 android:layout_marginBottom="20dp" />
-
             <!-- SECCIÓN LEYENDA DE COLORES -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="LEYENDA DE COLORES Y FESTIVOS"
-                android:textColor="@color/secundario"
+                android:textColor="@color/primary"
                 android:textSize="11sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="36sp"
+                android:layout_marginBottom="12dp"
                 android:letterSpacing="0.05" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                style="@style/Tarjeta_menu_personalizada"
-                app:cardBackgroundColor="@color/sp_activo">
+                android:layout_marginBottom="24dp"
+                style="@style/Tarjeta_menu_personalizada">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -199,7 +158,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:baselineAligned="false"
-                        android:layout_marginBottom="12dp">
+                        android:layout_marginBottom="14dp">
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -207,16 +166,18 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
-                            <View
+                            <androidx.cardview.widget.CardView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:background="@color/exceso_jornadas"
-                                android:layout_marginEnd="8dp"/>
+                                android:layout_marginEnd="10dp"
+                                app:cardElevation="0dp"
+                                app:cardCornerRadius="4dp"
+                                app:cardBackgroundColor="@color/cal_exceso"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Exceso Jornada"
-                                android:textColor="@color/texto_excesos"
+                                android:textColor="@color/text_primary"
                                 android:textSize="13sp" />
                         </LinearLayout>
 
@@ -226,16 +187,18 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
-                            <View
+                            <androidx.cardview.widget.CardView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:background="@color/vacaciones"
-                                android:layout_marginEnd="8dp"/>
+                                android:layout_marginEnd="10dp"
+                                app:cardElevation="0dp"
+                                app:cardCornerRadius="4dp"
+                                app:cardBackgroundColor="@color/cal_vacaciones"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Vacaciones"
-                                android:textColor="@color/texto_excesos"
+                                android:textColor="@color/text_primary"
                                 android:textSize="13sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -246,7 +209,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:baselineAligned="false"
-                        android:layout_marginBottom="12dp">
+                        android:layout_marginBottom="14dp">
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -254,16 +217,18 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
-                            <View
+                            <androidx.cardview.widget.CardView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:background="@color/nacional"
-                                android:layout_marginEnd="8dp"/>
+                                android:layout_marginEnd="10dp"
+                                app:cardElevation="0dp"
+                                app:cardCornerRadius="4dp"
+                                app:cardBackgroundColor="@color/cal_nacional"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Festivo Nacional"
-                                android:textColor="@color/texto_excesos"
+                                android:textColor="@color/text_primary"
                                 android:textSize="13sp" />
                         </LinearLayout>
 
@@ -273,16 +238,18 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
-                            <View
+                            <androidx.cardview.widget.CardView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:background="@color/autonomico"
-                                android:layout_marginEnd="8dp"/>
+                                android:layout_marginEnd="10dp"
+                                app:cardElevation="0dp"
+                                app:cardCornerRadius="4dp"
+                                app:cardBackgroundColor="@color/cal_autonomico"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Festivo Autonómico"
-                                android:textColor="@color/texto_excesos"
+                                android:textColor="@color/text_primary"
                                 android:textSize="13sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -293,7 +260,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:baselineAligned="false"
-                        android:layout_marginBottom="12dp">
+                        android:layout_marginBottom="14dp">
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -301,16 +268,18 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
-                            <View
+                            <androidx.cardview.widget.CardView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:background="#F59E0B"
-                                android:layout_marginEnd="8dp"/>
+                                android:layout_marginEnd="10dp"
+                                app:cardElevation="0dp"
+                                app:cardCornerRadius="4dp"
+                                app:cardBackgroundColor="@color/cal_local"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Festivo Local"
-                                android:textColor="@color/texto_excesos"
+                                android:textColor="@color/text_primary"
                                 android:textSize="13sp" />
                         </LinearLayout>
 
@@ -320,21 +289,23 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
-                            <View
+                            <androidx.cardview.widget.CardView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:background="@color/convenio"
-                                android:layout_marginEnd="8dp"/>
+                                android:layout_marginEnd="10dp"
+                                app:cardElevation="0dp"
+                                app:cardCornerRadius="4dp"
+                                app:cardBackgroundColor="@color/cal_convenio"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Festivo Convenio"
-                                android:textColor="@color/texto_excesos"
+                                android:textColor="@color/text_primary"
                                 android:textSize="13sp" />
                         </LinearLayout>
                     </LinearLayout>
 
-                    <!-- Fila 4: Días No Laborables -->
+                    <!-- Fila 4: Día Actual -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -347,16 +318,18 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
-                            <View
+                            <androidx.cardview.widget.CardView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:background="@color/azul"
-                                android:layout_marginEnd="8dp"/>
+                                android:layout_marginEnd="10dp"
+                                app:cardElevation="0dp"
+                                app:cardCornerRadius="4dp"
+                                app:cardBackgroundColor="@color/primary"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Hoy"
-                                android:textColor="@color/texto_excesos"
+                                android:text="Día Actual (Hoy)"
+                                android:textColor="@color/text_primary"
                                 android:textSize="13sp" />
                         </LinearLayout>
 
@@ -372,7 +345,6 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- ProgressBar centrado correctamente -->
     <ProgressBar
         android:id="@+id/pbCargando"
         android:layout_width="60dp"

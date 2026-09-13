@@ -3,16 +3,20 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="48dp"
+    android:gravity="center_vertical"
+    android:background="@color/selector_spinner_back_color"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
 
+    <!-- Texto del año destacado, alineado y con contraste garantizado -->
     <TextView
         android:id="@+id/tvSp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textColor="@color/selector_color_texto"
-        style="@style/TextoSpAnos"/>
+        android:layout_height="wrap_content"
+        android:textColor="@color/selector_color_texto_sp"
+        style="@style/TextoSpAnos"
+        android:gravity="start|center_vertical"/>
 
 </LinearLayout>
-
 

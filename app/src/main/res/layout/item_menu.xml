@@ -4,34 +4,37 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/miCardView"
     style="@style/Tarjeta_menu_personalizada"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?attr/selectableItemBackground"
-    app:rippleColor="#3F51B5">
+    android:foreground="?attr/selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
+        <!-- Emoji de la Tarjeta -->
         <TextView
             android:id="@+id/tvEmoji"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_marginStart="12dp"
             style="@style/EmojiTarjetaMenu"
-            android:gravity="center_vertical"/>
+            android:gravity="bottom|start"/>
 
+        <!-- Texto del Botón (Corregido color a text_primary) -->
         <TextView
             android:id="@+id/tvTexto"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:layout_marginStart="12dp"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/text_primary"
             style="@style/TextoTarjetaMenu"
-            android:gravity="center_vertical"/>
+            android:gravity="top|start"/>
 
     </LinearLayout>
 

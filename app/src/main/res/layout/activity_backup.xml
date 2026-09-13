@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://android.com"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://android.com"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app1="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backcolor">
+    android:background="@color/background_app">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,22 +21,22 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:src="@drawable/logo2_erimsa"/>
+                android:src="@drawable/logo2_erimsa"
+                android:contentDescription="Logo Erimsa"/>
 
             <!-- CABECERA: TÍTULO Y DESCRIPCIÓN -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                style="@style/TextoTitulos"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="SEGURIDAD Y RESPALDOS"
-                    android:textColor="@color/texto_excesos"
+                    android:textColor="@color/text_secondary"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.15" />
@@ -45,9 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Copia de Seguridad"
-                    android:textColor="@color/texto_excesos"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
+                    style="@style/TextoTitulos"
                     android:layout_marginTop="4dp" />
             </LinearLayout>
 
@@ -56,19 +54,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="RESPALDA TU INFORMACIÓN"
-                android:textColor="@color/secundario"
-                android:textSize="11dp"
+                android:textColor="@color/primary"
+                android:textSize="11sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp"
                 android:letterSpacing="0.05" />
 
-            <!-- CardView -->
+            <!-- CardView Exportar -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                style="@style/Tarjeta_menu_personalizada"
-                app1:cardBackgroundColor="@color/rojo">
+                android:layout_marginBottom="16dp"
+                style="@style/Tarjeta_menu_personalizada">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -93,7 +90,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Exportar calendario.db"
-                            android:textColor="@color/texto_excesos"
+                            android:textColor="@color/text_primary"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -101,14 +98,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Guarda una copia de tus datos en Google Drive, una tarjeta SD o tu almacenamiento local."
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_secondary"
                             android:textSize="13sp"
-                            android:layout_marginTop="2dp" />
+                            android:layout_marginTop="4dp" />
 
                     </LinearLayout>
-
                 </LinearLayout>
-
             </androidx.cardview.widget.CardView>
 
             <!-- BOTÓN ACCIÓN EXPORTAR -->
@@ -117,18 +112,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:text="Guardar Archivo de Datos"
-                android:backgroundTint="#7C3AED"
-                android:textColor="@color/texto_excesos"
+                android:backgroundTint="@color/primary"
+                android:textColor="@color/text_on_primary"
                 android:textStyle="bold"
                 android:layout_marginBottom="24dp"
                 android:textSize="16sp"
-                app:cornerRadius="16dp" />
+                app:cornerRadius="12dp" />
 
             <!-- DIVISOR ESTILIZADO -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/secundario"
+                android:background="@color/divider"
                 android:layout_marginBottom="24dp" />
 
             <!-- SECCIÓN 2: IMPORTAR (ABRIR COPIA) -->
@@ -136,18 +131,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="RESTAURAR O CAMBIAR ARCHIVO"
-                android:textColor="@color/secundario"
+                android:textColor="@color/error"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp"
                 android:letterSpacing="0.05" />
 
+            <!-- CardView Importar -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                style="@style/Tarjeta_menu_personalizada"
-                app1:cardBackgroundColor="@color/azul">
+                android:layout_marginBottom="16dp"
+                style="@style/Tarjeta_menu_personalizada">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -172,7 +167,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Abrir nueva copia .db"
-                            android:textColor="@color/texto_excesos"
+                            android:textColor="@color/text_primary"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -180,14 +175,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="¡Atención! Reemplazará permanentemente todas tus jornadas y vacaciones guardadas actualmente."
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_secondary"
                             android:textSize="13sp"
-                            android:layout_marginTop="2dp" />
+                            android:layout_marginTop="4dp" />
 
                     </LinearLayout>
-
                 </LinearLayout>
-
             </androidx.cardview.widget.CardView>
 
             <!-- BOTÓN ACCIÓN IMPORTAR -->
@@ -196,15 +189,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:text="Abrir Archivo de Datos"
-                android:backgroundTint="@color/primario"
-                android:textColor="@color/texto_excesos"
+                android:backgroundTint="@color/secondary"
+                android:textColor="@color/text_on_primary"
                 android:textStyle="bold"
                 android:layout_marginBottom="24dp"
                 android:textSize="16sp"
-                app:cornerRadius="16dp" />
+                app:cornerRadius="12dp" />
 
         </LinearLayout>
-
     </ScrollView>
 
     <!-- ProgressBar centrado correctamente -->

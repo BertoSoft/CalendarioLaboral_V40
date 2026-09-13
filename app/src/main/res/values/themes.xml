@@ -1,61 +1,87 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.CalendarioLaboral_V40" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!-- Theme base de la aplicación (Modo Claro) -->
+        <style name="Base.Theme.CalendarioLaboral_V40" parent="Theme.Material3.DayNight.NoActionBar">
+            <!-- Colores de marca globales: Android pintará tus botones, campos y barras automáticamente -->
+            <item name="colorPrimary">@color/primary</item>
+            <item name="colorOnPrimary">@color/text_on_primary</item>
+            <item name="colorSecondary">@color/secondary</item>
+
+            <!-- Fondos generales y de superficie -->
+            <item name="android:windowBackground">@color/background_app</item>
+            <item name="colorSurface">@color/surface_card</item>
+            <item name="colorOnSurface">@color/text_primary</item>
+
+            <!-- Colores para estados de error -->
+            <item name="colorError">@color/error</item>
+
+
+        </style>
+
+        <style name="Theme.CalendarioLaboral_V40" parent="Base.Theme.CalendarioLaboral_V40" />
+
+        <!-- Estilo para las Tarjetas del Menú -->
+    <style name="Tarjeta_menu_personalizada" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/surface_card</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="strokeWidth">0dp</item>
     </style>
 
-    <style name="Theme.CalendarioLaboral_V40" parent="Base.Theme.CalendarioLaboral_V40" />
-    
-    <style name="Tarjeta_menu_personalizada" parent="Widget.Material3.CardView.Filled">
-        <item name="cardBackgroundColor">@color/backcolor</item>
+    <!-- Estilo para las Tarjetas de los Rv -->
+    <style name="Tarjeta_Rv" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/secondary</item>
         <item name="cardCornerRadius">16dp</item>
         <item name="cardElevation">8dp</item>
-        <item name="strokeWidth">0dp</item> <!-- Elimina bordes extraños en Material 3 -->
-
+        <item name="strokeWidth">0dp</item>
     </style>
 
-    <!-- Estilo opcional para centralizar también el diseño del texto interno -->
-    <style name="TextoTarjetaMenu">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:layout_gravity">center</item>
-    </style>
+        <!-- ========================================== -->
+        <!--          ESTILOS DE TIPOGRAFÍA             -->
+        <!-- ========================================== -->
 
-    <style name="EmojiTarjetaMenu">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">24sp</item>
-        <item name="android:layout_gravity">center</item>
-    </style>
+        <!-- Texto Titulos Principal -->
+        <style name="TextoTitulos">
+            <item name="android:textColor">@color/text_primary</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:textSize">24sp</item>
+        </style>
 
-    <!-- Texto Titulos -->
-    <style name="TextoTitulos">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">24sp</item>
-    </style>
+        <!-- Texto interno del menú flotante -->
+        <style name="TextoTarjetaMenu">
+            <item name="android:textColor">@color/text_primary</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:textSize">18sp</item> <!-- Bajado a 16sp para que quepan bien nombres largos -->
+            <item name="android:layout_gravity">center_vertical</item>
+        </style>
 
-    <!-- Texto Sp -->
-    <style name="TextoSpAnos">
-        <item name="android:textColor">@color/selector_color_texto</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">20sp</item>
-    </style>
+        <style name="EmojiTarjetaMenu">
+            <item name="android:textSize">34sp</item>
+            <item name="android:layout_gravity">center_vertical</item>
+        </style>
 
-    <style name="TextoSp">
-        <item name="android:textColor">@color/selector_color_texto</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">14sp</item>
-    </style>
+        <!-- Textos para Spinners (Selectores) -->
+        <style name="TextoSpAnos">
+            <item name="android:textStyle">bold</item>
+            <item name="android:textSize">18sp</item>
+        </style>
 
-    <!-- Texto  -->
-    <style name="Texto">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-    <style name="Texto_16">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">16sp</item>
-    </style>
+        <style name="TextoSp">
+            <item name="android:textStyle">bold</item> <!-- Cambiado a normal para diferenciar de los títulos -->
+            <item name="android:textSize">16sp</item>
+        </style>
+
+        <!-- Textos Genéricos del Sistema -->
+        <style name="Texto">
+            <item name="android:textColor">@color/text_secondary</item> <!-- Gris medio para textos base -->
+            <item name="android:textSize">14sp</item>
+        </style>
+
+        <style name="Texto_16">
+            <item name="android:textColor">@color/text_primary</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:textSize">16sp</item>
+        </style>
 
 
 </resources>

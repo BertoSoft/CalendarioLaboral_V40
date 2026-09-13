@@ -6,71 +6,69 @@
     android:id="@+id/cardItemVacDetalle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    android:padding="4dp"
-    style="@style/Tarjeta_menu_personalizada"
-    app:cardBackgroundColor="@color/backcolor">
+    android:layout_margin="8dp"
+    style="@style/Tarjeta_menu_personalizada">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:padding="12dp">
 
-        <!--  Icono de Calendario a la izquierda  -->
+        <!-- Icono de Calendario estilizado a la izquierda -->
         <ImageView
             android:id="@+id/ivDetalleIcono"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:padding="8dp"
+            android:padding="4dp"
             android:src="@drawable/calendar_svgrepo_com"
+            app:tint="@color/primary"
             android:importantForAccessibility="no"/>
 
-        <!--  Contenedor vertical para apilar los textos  -->
+        <!-- Contenedor vertical para apilar los textos con mejor jerarquía -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:padding="8dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
             android:orientation="vertical">
 
-            <!--  Rango de Fechas (Elemento principal arriba)  -->
+            <!-- Rango de Fechas (Elemento principal destacado) -->
             <TextView
                 android:id="@+id/tvDetalleFechas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="4dp"
                 android:text="Del --/--/---- al --/--/----"
-                android:textAlignment="center"
                 style="@style/Texto_16"
-                android:textStyle="bold"
-                android:textColor="@color/secundario"/>
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"/>
 
-            <!--  Contador de Días (Ubicado justo debajo de las fechas)  -->
+            <!-- Contador de Días (Secundario, más suave e informativo) -->
             <TextView
                 android:id="@+id/tvDetalleTotalDias"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
                 android:text="Días laborables: 21 Días."
-                style="@style/Texto_16"
-                android:textColor="@color/secundario"/>
+                style="@style/Texto"
+                android:textColor="@color/text_secondary"/>
 
         </LinearLayout>
 
-        <!-- Botón de Papelera Estilizado y Minimalista -->
+        <!-- Botón de Papelera Estilizado con color de alerta sutil -->
         <ImageButton
             android:id="@+id/ivDelete"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:padding="8dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="4dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_eliminar"
             android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Eliminar festivo" />
-
+            app:tint="@color/warning"
+            android:contentDescription="Eliminar período de vacaciones" />
 
     </LinearLayout>
 

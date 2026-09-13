@@ -43,24 +43,34 @@ class FestivosAdapter(
     ): RecyclerView.ViewHolder(binding.root){
 
         fun render(festivo: DatosFestivos, utils: Utils){
+            val context = itemView.context
             val strFechaLarga = utils.fromLocalDateToFechaLarga(festivo.fecha)
-            val strTipo = binding.root.context.getString( festivo.tipoFestivo.toStringRes())
+            val strTipo = context.getString(festivo.tipoFestivo.toStringRes())
 
-            // Color de fondo
-            val color = when(festivo.tipoFestivo){
-                TipoFestivo.NACIONAL -> R.color.nacional
-                TipoFestivo.AUTONOMICO -> R.color.autonomico
-                TipoFestivo.LOCAL -> R.color.local
-                TipoFestivo.EXCESO_JORNADA -> R.color.exceso
-                TipoFestivo.CONVENIO -> R.color.convenio
+            // 🎯 Mapeamos los nuevos colores vibrantes específicos de las listas
+            val colorRes = when(festivo.tipoFestivo){
+                TipoFestivo.NACIONAL -> R.color.tag_nacional
+                TipoFestivo.AUTONOMICO -> R.color.tag_autonomico
+                TipoFestivo.LOCAL -> R.color.tag_local
+                TipoFestivo.EXCESO_JORNADA -> R.color.tag_exceso
+                TipoFestivo.CONVENIO -> R.color.tag_convenio
             }
 
             with(binding){
                 tvFecha.text = strFechaLarga
                 tvTipoFestivo.text = strTipo
-                cardFestivos.setCardBackgroundColor(itemView.context.getColor(color))
 
-                // Funciones setOnClickListener
+                // EXTRAEMOS EL COLOR EN FORMATO INT
+                val colorInt = context.getColor(colorRes)
+                val colorPrimary = context.getColor(R.color.text_on_primary)
+
+                // 1. Aplicamos el color vivo al texto al 100% de fuerza
+                tvTipoFestivo.setTextColor(colorPrimary)
+
+                // Pintamos la pastilla protectora con esa transparencia elegante
+                cardChipTipo.setCardBackgroundColor(colorInt)
+
+                // Acciones de pulsación
                 cardFestivos.setOnClickListener {
                     onItemPulsado?.invoke(festivo)
                 }
@@ -70,6 +80,7 @@ class FestivosAdapter(
                 }
             }
         }
+
     }
 
     companion object DiffCallback: DiffUtil.ItemCallback<DatosFestivos>(){

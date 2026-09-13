@@ -4,25 +4,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:padding="2dp">
+    android:gravity="center">
 
+    <!-- Tarjeta del día con esquinas redondeadas y sin sombras pesadas -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardContenedorDia"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:cardCornerRadius="8dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cardCornerRadius="10dp"
         app:cardElevation="0dp"
-        app:cardBackgroundColor="@color/sp_activo">
+        app:cardBackgroundColor="@color/cal_default_bg">
 
+        <!-- Número del día optimizado en tamaño y jerarquía -->
         <TextView
             android:id="@+id/tvNumeroDia"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/texto_excesos"/>
+            android:textColor="@color/text_primary"/>
 
     </androidx.cardview.widget.CardView>
 </LinearLayout>

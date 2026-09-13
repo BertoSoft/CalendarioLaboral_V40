@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado: Deshabilitado -->
+    <item android:state_enabled="false" android:color="#7F7D7D" />
+    <!-- Estado: Activo (Por defecto) -> El color de acento azul/violeta moderno -->
+    <item android:state_enabled="true" android:color="@color/text_on_primary" />
+</selector>

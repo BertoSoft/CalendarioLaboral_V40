@@ -10,6 +10,7 @@ data class DatosCalendario(
     val isAutonomico: Boolean,
     val isLocal: Boolean,
     val isConvenio: Boolean,
+    val isExceso: Boolean,
     val isVacaciones: Boolean,
     val isSabado: Boolean,
     val isDomingo: Boolean,

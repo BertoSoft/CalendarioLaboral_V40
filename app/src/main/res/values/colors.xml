@@ -1,28 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="rojo">#E80520</color>
-    <color name="azul">#1432D9</color>
-    <color name="primario">#FF5722</color>
-    <color name="secundario">#673AB7</color>
-    <color name="forecolor">@color/gris_claro</color>
-    <color name="backcolor">#FCECC0</color>
-    <color name="transparente">#00000000</color>
-    <color name="festivos">#5D4037</color>
-    <color name="vacaciones">#2E4F4F</color>
-    <color name="backup">#6D6B66</color>
-    <color name="exceso">#C27664</color>
-    <color name="calendario">#1B263B</color>
-    <color name="sp_activo">#EFC0F8</color>
-    <color name="btn_activo">#5C73E8</color>
-    <color name="gris_oscuro">#4E5252</color>
-    <color name="texto_excesos">#000000</color>
+    <!-- 1. COLORES BASE ABSOLUTOS -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#111111</color>
+    <color name="transparent">#00000000</color>
 
-    <color name="nacional">#D94E45</color>
-    <color name="autonomico">#3C99E3</color>
-    <color name="exceso_jornadas">#60D865</color>
-    <color name="local">#D39A46</color>
-    <color name="convenio">#9C27B0</color>
-    <color name="gris_claro">#C4C7C7</color>
+    <!-- 2. PALETA CORPORATIVA / MARCA -->
+    <!-- El color de identidad que dominará la app (ideal para botones principales, barras de navegación, etc.) -->
+    <color name="primary">#0F4C81</color>
+    <!-- Un tono más claro del primario para estados seleccionados, fondos de elementos activos o decoraciones -->
+    <color name="primary_light">#EAF2F8</color>
+    <!-- Color de acento para destacar elementos muy específicos (switches, FABs, notificaciones) -->
+    <color name="secondary">#536DFE</color>
+    <!-- Color de gran acento para romper la simetría y destacar el Calendario -->
+    <color name="accent_calendario">#F59E0B</color> <!-- Ámbar brillante premium -->
+
+    <!-- 3. FONDOS Y SUPERFICIES (Azul Intermedio Atenuado / Dim Mode) -->
+    <!-- El fondo pasa de gris oscuro a un azul noche más claro, vivo y elegante -->
+    <color name="background_app">#1A2A44</color>
+
+    <!-- Las tarjetas ahora serán de un azul marino más luminoso para contrastar sobre el fondo -->
+    <color name="surface_card">#354080</color>
+
+    <!-- 4. TEXTOS Y DIVISORES ADAPTADOS -->
+    <!-- Blanco puro para que brille y tenga máxima legibilidad sobre este azul -->
+    <color name="text_primary">#FFFFFF</color>
+    <!-- Gris azulado claro para los subtítulos o descripciones secundarias -->
+    <color name="text_secondary">#94AECB</color>
+    <color name="text_terciary">#F54108</color>
+
+    <color name="text_on_primary">#FFFFFF</color>
+    <!-- El divisor ahora es una línea azul sutil para que no rompa la estética -->
+    <color name="divider">#344D75</color>
+
+    <!-- 5. ESTADOS Y CONTROLES (Bordes y deshabilitados) -->
+    <!-- Color sutil para líneas divisorias (Views de 1dp) o bordes sueltos -->
+    <!-- Gris apagado para cuando un botón o un elemento esté deshabilitado -->
+    <color name="disabled">#BDC3C7</color>
+    <color name="sp_activo">#00BCD4</color>
+
+    <!-- 6. COLORES SEMÁNTICOS (Alertas y estados) -->
+    <color name="error">#D32F2F</color>       <!-- Rojo para eliminar registros o errores -->
+    <color name="success">#339237</color>     <!-- Verde para guardado exitoso o checkmarks -->
+    <color name="warning">#F57C00</color>     <!-- Naranja para alertas o backups pendientes -->
+
+    <!-- 7. COLORES ESPECÍFICOS DEL CALENDARIO (Tonos pastel profesionales) -->
+    <color name="cal_weekend_text">#E74C3C</color>     <!-- Rojo elegante para el número de Sáb/Dom -->
+    <color name="cal_default_bg">#1A2A44</color>       <!-- Fondo blanco para un día normal -->
+    <color name="cal_empty_bg">#1A2A44</color>         <!-- Gris sutil para los huecos vacíos del mes -->
+
+    <!-- Fondos de estados (Colores suaves para que no saturen la pantalla) -->
+    <color name="cal_vacaciones">#7CF0AC</color>       <!-- Verde menta suave -->
+    <color name="cal_nacional">#EF9991</color>         <!-- Rojo/Rosa pastel suave -->
+    <color name="cal_autonomico">#FCE380</color>       <!-- Amarillo pastel suave -->
+    <color name="cal_local">#86E6D4</color>            <!-- Turquesa claro -->
+    <color name="cal_convenio">#60CCF0</color>         <!-- Azul cielo pastel -->
+    <color name="cal_exceso">#D295E9</color>           <!-- Morado pastel suave -->
+
+    <!-- 8. COLORES PARA LAS TARJETAS DEL HOME (Tonos sutiles de marca) -->
+    <color name="home_festivos">#0F4C81</color>          <!-- Azul primario corporativo -->
+
+    <!-- 9. COLORES VIBRANTES PARA ETIQUETAS DE FESTIVOS (Modo Oscuro) -->
+    <color name="tag_nacional">#FF5252</color>       <!-- Rojo vivo -->
+    <color name="tag_autonomico">#FFB300</color>     <!-- Amarillo ámbar vivo -->
+    <color name="tag_local">#00E676</color>          <!-- Verde brillante -->
+    <color name="tag_convenio">#40C4FF</color>       <!-- Azul cian brillante -->
+    <color name="tag_exceso">#E040FB</color>         <!-- Morado/Neón brillante -->
+    <color name="home_vacaciones">#388E3C</color>        <!-- Verde éxito suave -->
+    <color name="home_backup">#F57C00</color>            <!-- Naranja/Ambar corporativo -->
+    <color name="home_exceso">#536DFE</color>            <!-- Azul acento moderno -->
+    <color name="home_calendario">#1C2833</color>        <!-- Gris oscuro premium -->
+
 </resources>

@@ -112,6 +112,7 @@ class CalendarioViewModel@Inject constructor(
                 false,
                 false,
                 false,
+                false,
                 false
             ))
         }
@@ -124,6 +125,7 @@ class CalendarioViewModel@Inject constructor(
                 dato.isAutonomico,
                 dato.isLocal,
                 dato.isConvenio,
+                dato.isExceso,
                 dato.isVacaciones,
                 dato.isSabado,
                 dato.isDomingo,
@@ -135,6 +137,7 @@ class CalendarioViewModel@Inject constructor(
         for(i in 0 until  diasVaciosFinal){
             listaDiasMes.add(DatosCalendario(
                 null,
+                false,
                 false,
                 false,
                 false,

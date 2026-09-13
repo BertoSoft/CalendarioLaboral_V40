@@ -39,6 +39,7 @@ class CalendarioUseCase@Inject constructor(
             val isAutonomico = (festivoDia?.tipoFestivo == TipoFestivo.AUTONOMICO)
             val isLocal = (festivoDia?.tipoFestivo == TipoFestivo.LOCAL)
             val isConvenio = (festivoDia?.tipoFestivo == TipoFestivo.CONVENIO)
+            val isExceso = (festivoDia?.tipoFestivo == TipoFestivo.EXCESO_JORNADA)
 
             val isVacaciones = listaVacacionesMes.any {
                 !fecha.isBefore(it.fechaInicio) &&
@@ -53,6 +54,7 @@ class CalendarioUseCase@Inject constructor(
                     isAutonomico,
                     isLocal,
                     isConvenio,
+                    isExceso,
                     isVacaciones,
                     isSabado,
                     isDomingo,
