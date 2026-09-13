@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="18dp"
+                android:layout_marginBottom="14dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
@@ -77,9 +77,9 @@
             <!-- RecyclerView dentro de tarjeta limpia -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="280dp"
                 style="@style/Tarjeta_menu_personalizada"
-                android:layout_marginBottom="24dp">
+                android:layout_marginBottom="16sp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvFestivos"
@@ -95,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/divider"
-                android:layout_marginBottom="24dp"/>
+                android:layout_marginBottom="16sp"/>
             <!-- SECCIÓN NUEVO REGISTRO -->
             <TextView
                 android:layout_width="wrap_content"
@@ -139,7 +139,7 @@
                     android:id="@+id/cardSpFestivos"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
-                    android:layout_marginBottom="24dp"
+                    android:layout_marginBottom="16sp"
                     style="@style/Tarjeta_menu_personalizada"
                     app:cardBackgroundColor="@color/selector_spinner_back_color"
                     app:cardElevation="0dp">

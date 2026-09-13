@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_primary"
-                android:textSize="16sp"
+                android:textSize="14dp"
                 android:textStyle="bold"
                 tools:text="Lunes, 10 de Abril de 2026"
                 android:gravity="start"/>
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="4dp"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     tools:text="Nacional"
                     android:gravity="center"/>
