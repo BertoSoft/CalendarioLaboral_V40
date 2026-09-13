@@ -40,7 +40,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="75dp"
-                    android:src="@drawable/logo2_erimsa"
+                    android:src="@drawable/logop1"
                     android:contentDescription="Logo Erimsa"/>
 
                 <!-- Espacio invisible para centrar el logo perfectamente -->

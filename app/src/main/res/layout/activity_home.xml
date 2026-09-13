@@ -23,7 +23,7 @@
                 android:layout_height="75dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
-                android:src="@drawable/logop2"
+                android:src="@drawable/logop1"
                 android:contentDescription="Logo Erimsa"/>
 
             <!-- Fila 1: Márgenes subidos a 16dp -->

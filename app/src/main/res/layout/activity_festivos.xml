@@ -20,7 +20,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:src="@drawable/logo2_erimsa"
+                android:src="@drawable/logop1"
                 android:contentDescription="Logo Erimsa"/>
 
             <!-- Texto Titulo y spAno -->
