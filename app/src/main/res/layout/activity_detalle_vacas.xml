@@ -23,7 +23,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:src="@drawable/logop1"
+                android:src="@drawable/logo0_azul"
                 android:contentDescription="Logo Erimsa"/>
 
             <!-- Titulo y Spinner -->

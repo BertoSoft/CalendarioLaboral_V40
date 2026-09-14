@@ -33,14 +33,14 @@
                     android:layout_height="48dp"
                     android:padding="8dp"
                     android:background="?android:attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/prismaticos"
+                    android:src="@drawable/prismaticos_azul"
                     android:contentDescription="Ver resumen de vacaciones"/>
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="75dp"
-                    android:src="@drawable/logop1"
+                    android:src="@drawable/logo0_azul"
                     android:contentDescription="Logo Erimsa"/>
 
                 <!-- Espacio invisible para centrar el logo perfectamente -->
@@ -102,6 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="260dp"
                 style="@style/Tarjeta_menu_personalizada"
+                app:cardBackgroundColor="@color/background_app"
                 android:layout_marginBottom="24dp">
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -164,7 +165,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/black"
                             android:textSize="12sp"
                             android:gravity="center"
                             android:text="Fecha Inicio 📅"/>
@@ -203,7 +204,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/black"
                             android:textSize="12sp"
                             android:gravity="center"
                             android:text="Fecha Fin 📅"/>

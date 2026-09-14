@@ -23,7 +23,7 @@
                 android:layout_height="75dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
-                android:src="@drawable/logop1"
+                android:src="@drawable/logo0_azul"
                 android:contentDescription="Logo Erimsa"/>
 
             <!-- Fila 1: Márgenes subidos a 16dp -->
@@ -79,14 +79,14 @@
             <!-- Fila 3: Calendario destacado con márgenes de 16dp -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="190dp"
                 android:orientation="horizontal"
                 android:baselineAligned="false">
 
                 <include
                     android:id="@+id/cardCalendarioLaboral"
                     android:layout_width="match_parent"
-                    android:layout_height="220dp"
+                    android:layout_height="match_parent"
                     android:layout_margin="16dp"
                     layout="@layout/item_menu"/>
 

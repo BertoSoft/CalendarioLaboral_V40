@@ -74,7 +74,7 @@ class HomeActivity : AppCompatActivity() {
             cardVacaciones.setTextosyEmojis(R.color.home_vacaciones,"\uD83C\uDF34", "Mis \nVacaciones")
             cardBackup.setTextosyEmojis(R.color.home_backup,"\uD83D\uDCBE", "Copia de \nSeguridad")
             cardExcesoJornadas.setTextosyEmojis(R.color.home_exceso,"⏱\uFE0F", "Exceso de \nJornadas")
-            cardCalendarioLaboral.setTextosyEmojis(R.color.accent_calendario,"\uD83D\uDCC5", "Calendario Laboral")
+            cardCalendarioLaboral.setTextosyEmojis(R.color.home_calendario,"\uD83D\uDCC5", "Calendario Laboral")
         }
     }
 }

@@ -7,7 +7,7 @@
 
     <!-- 2. PALETA CORPORATIVA / MARCA -->
     <!-- El color de identidad que dominará la app (ideal para botones principales, barras de navegación, etc.) -->
-    <color name="primary">#0F4C81</color>
+    <color name="primary">#058BF6</color>
     <!-- Un tono más claro del primario para estados seleccionados, fondos de elementos activos o decoraciones -->
     <color name="primary_light">#EAF2F8</color>
     <!-- Color de acento para destacar elementos muy específicos (switches, FABs, notificaciones) -->
@@ -17,10 +17,10 @@
 
     <!-- 3. FONDOS Y SUPERFICIES (Azul Intermedio Atenuado / Dim Mode) -->
     <!-- El fondo pasa de gris oscuro a un azul noche más claro, vivo y elegante -->
-    <color name="background_app">#1A2A44</color>
+    <color name="background_app">#2839BC</color>
 
     <!-- Las tarjetas ahora serán de un azul marino más luminoso para contrastar sobre el fondo -->
-    <color name="surface_card">#354080</color>
+    <color name="surface_card">#11152D</color>
 
     <!-- 4. TEXTOS Y DIVISORES ADAPTADOS -->
     <!-- Blanco puro para que brille y tenga máxima legibilidad sobre este azul -->
@@ -58,7 +58,6 @@
     <color name="cal_exceso">#D295E9</color>           <!-- Morado pastel suave -->
 
     <!-- 8. COLORES PARA LAS TARJETAS DEL HOME (Tonos sutiles de marca) -->
-    <color name="home_festivos">#0F4C81</color>          <!-- Azul primario corporativo -->
 
     <!-- 9. COLORES VIBRANTES PARA ETIQUETAS DE FESTIVOS (Modo Oscuro) -->
     <color name="tag_nacional">#FF5252</color>       <!-- Rojo vivo -->
@@ -66,9 +65,10 @@
     <color name="tag_local">#00E676</color>          <!-- Verde brillante -->
     <color name="tag_convenio">#40C4FF</color>       <!-- Azul cian brillante -->
     <color name="tag_exceso">#E040FB</color>         <!-- Morado/Neón brillante -->
-    <color name="home_vacaciones">#388E3C</color>        <!-- Verde éxito suave -->
-    <color name="home_backup">#F57C00</color>            <!-- Naranja/Ambar corporativo -->
-    <color name="home_exceso">#536DFE</color>            <!-- Azul acento moderno -->
-    <color name="home_calendario">#1C2833</color>        <!-- Gris oscuro premium -->
+    <color name="home_vacaciones">#2FB835</color>        <!-- Verde éxito suave -->
+    <color name="home_backup">#FB4107</color>            <!-- Naranja/Ambar corporativo -->
+    <color name="home_exceso">#8B4FF2</color>            <!-- Azul acento moderno -->
+    <color name="home_calendario">#022440</color>        <!-- Gris oscuro premium -->
+    <color name="home_festivos">#0589F2</color>        <!-- Gris oscuro premium -->
 
 </resources>

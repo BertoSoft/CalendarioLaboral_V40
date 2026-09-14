@@ -20,7 +20,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:src="@drawable/logop1"
+                android:src="@drawable/logo0_azul"
                 android:contentDescription="Logo Erimsa"/>
 
             <!-- Texto Titulo y spAno -->
@@ -79,6 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
                 style="@style/Tarjeta_menu_personalizada"
+                app:cardBackgroundColor="@color/background_app"
                 android:layout_marginBottom="16sp">
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -119,6 +120,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginBottom="14dp"
+                    app:cardBackgroundColor="@color/selector_fechas_back_color"
                     style="@style/Tarjeta_menu_personalizada">
 
                     <TextView
@@ -126,8 +128,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:background="@color/primary_light"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/selector_color_texto_fechas"
                         android:textStyle="bold"
                         android:textSize="14sp"
                         android:text="Seleccionar Fecha 📅"/>
