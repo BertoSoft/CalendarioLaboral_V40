@@ -105,13 +105,13 @@
                 android:layout_height="40dp"
                 android:orientation="horizontal">
 
-                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16" android:gravity="center" android:text="L"/>
-                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16" android:gravity="center" android:text="M"/>
-                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16" android:gravity="center" android:text="X"/>
-                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16" android:gravity="center" android:text="J"/>
-                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16" android:gravity="center" android:text="V"/>
-                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16" android:textColor="@color/cal_weekend_text" android:gravity="center" android:text="S"/>
-                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16" android:textColor="@color/cal_weekend_text" android:gravity="center" android:text="D"/>
+                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16N" android:gravity="center" android:text="L"/>
+                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16N" android:gravity="center" android:text="M"/>
+                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16N" android:gravity="center" android:text="X"/>
+                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16N" android:gravity="center" android:text="J"/>
+                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16N" android:gravity="center" android:text="V"/>
+                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16N" android:textColor="@color/cal_weekend_text" android:gravity="center" android:text="S"/>
+                <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" style="@style/Texto_16N" android:textColor="@color/cal_weekend_text" android:gravity="center" android:text="D"/>
 
             </LinearLayout>
 

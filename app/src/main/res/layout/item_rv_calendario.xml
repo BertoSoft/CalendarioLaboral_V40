@@ -13,7 +13,7 @@
         android:layout_height="50dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp"
-        app:cardBackgroundColor="@color/cal_default_bg">
+        app:cardBackgroundColor="@color/background_app">
 
         <!-- Número del día optimizado en tamaño y jerarquía -->
         <TextView

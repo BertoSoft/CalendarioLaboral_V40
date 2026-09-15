@@ -46,7 +46,7 @@ class CalendarioAdapter@Inject constructor(): ListAdapter<DatosCalendario, Calen
                     if (dia.isSabado || dia.isDomingo) {
                         // Fin de semana: Texto rojo elegante corporativo
                         tvNumeroDia.setTextColor(context.getColor(R.color.cal_weekend_text))
-                        cardContenedorDia.setCardBackgroundColor(context.getColor(R.color.cal_default_bg))
+                        cardContenedorDia.setCardBackgroundColor(context.getColor(R.color.background_app))
                     } else {
                         if (dia.isHoy) {
                             // Si es hoy, destaca con tu azul primario estrella
@@ -65,7 +65,7 @@ class CalendarioAdapter@Inject constructor(): ListAdapter<DatosCalendario, Calen
                     // Si el día es vacío (huecos de inicio o fin del mes)
                     tvNumeroDia.text = ""
                     // Un fondo gris sutil para marcar que no pertenecen al mes actual
-                    cardContenedorDia.setCardBackgroundColor(context.getColor(R.color.cal_empty_bg))
+                    cardContenedorDia.setCardBackgroundColor(context.getColor(R.color.background_app))
                 }
             }
         }
@@ -80,7 +80,7 @@ class CalendarioAdapter@Inject constructor(): ListAdapter<DatosCalendario, Calen
                 dia.isLocal -> context.getColor(R.color.cal_local)
                 dia.isConvenio -> context.getColor(R.color.cal_convenio)
                 dia.isExceso -> context.getColor(R.color.cal_exceso)
-                else -> context.getColor(R.color.cal_default_bg) // Fondo por defecto (crad_surface)
+                else -> context.getColor(R.color.background_app) // Fondo por defecto (crad_surface)
             }
         }
     }
